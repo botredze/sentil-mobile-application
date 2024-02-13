@@ -7,12 +7,13 @@ const COLORS = {
     backgroundCardLite: '#FFF',
 
     backgroundInputDark: '#7e8283',
-    backgroundInputLite: '#dedede',
+    backgroundInputLite: 'rgba(222,222,222,0.65)',
 
     borderColorDark: '#989797',
-    borderColorLite: '#989797',
+    borderColorLite: 'rgba(180,172,172,0)',
 
-    cardContainerDark: '#565656',
+
+    cardContainerDark: '#282C33',
     cardContainerLite: '#e3e3e3',
 
     cardDark: '#868585',
@@ -21,11 +22,11 @@ const COLORS = {
     summContainerLite: '#ffd950',
     summContainerDark: '#ffc400',
 
-    shadowDark: '#f5f5f5',
-    shadowLite: '#171717',
+    shadowDark: '#000000',
+    shadowLite: '#000000',
 
-    iconBackGroundColorDark: '#b4acac',
-    iconbackGroundColorLite: '#b4acac',
+    iconBackGroundColorDark: 'rgba(233,239,245,0.08)',
+    iconbackGroundColorLite: 'rgba(208,208,208,0.89)',
 
     modalOverlayLite: 'rgba(0,0,0,0.13)',
     modalOverlayDark: 'rgba(0,0,0,0.13)',

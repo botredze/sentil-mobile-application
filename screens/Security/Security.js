@@ -1,7 +1,17 @@
 import {styles, stylesLite} from "./securityStyle";
-import {Animated, Image, Modal, Text, TouchableOpacity, TouchableWithoutFeedback, View} from "react-native";
+import {
+    Animated,
+    Image,
+    KeyboardAvoidingView,
+    Modal, Platform,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    View
+} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
@@ -13,10 +23,15 @@ export default function Security() {
     const [passwordModalVisible, setPasswordModalVisible] = useState(false);
     const [pinModalVisible, setPinModalVisible] = useState(false);
 
+
+    const goToSettingsPage = () => {
+        navigation.navigate('Settings')
+    };
+
     const isDarkTheme = useSelector(selectIsDarkTheme);
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
-
+    let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
     const showPasswordModal = () => setPasswordModalVisible(true);
     const hidePasswordModal = () => setPasswordModalVisible(false);
 
@@ -26,7 +41,27 @@ export default function Security() {
     const navigation = useNavigation();
 
 
-    
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+
+    const fadeIn = () => {
+        // Will change fadeAnim value to 1 in 5 seconds
+        Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 5000,
+            useNativeDriver: true,
+        }).start();
+    };
+
+    const fadeOut = () => {
+        // Will change fadeAnim value to 0 in 3 seconds
+        Animated.timing(fadeAnim, {
+            toValue: 0,
+            duration: 3000,
+            useNativeDriver: true,
+        }).start();
+    };
+
+
     return (
         <View style={styles.container}>
             <View style={styles.nav}>
@@ -44,76 +79,100 @@ export default function Security() {
 
             <View style={styles.title}><Text style={styles.profileText}> Смена пароля </Text></View>
 
-            <TouchableOpacity onPress={showPasswordModal}>
-                <View style={[styles.settingTabs, styles.shadowProp]}>
-                    <Image source={require('../../assets/password.png')} style={styles.iconSet} />
-                    <View style={styles.textView}>
-                        <Text style={styles.nameText}>Пароль</Text>
-                        <Text style={styles.settingsText}>Сменить пароль аккаунта</Text>
-                    </View>
+            <TouchableOpacity style={[styles.settingTabs, shadowProp]} onPress={showPasswordModal}>
+                <Image source={require('../../assets/password.png')} style={styles.iconSet}/>
+                <View style={styles.textView}>
+                    <Text style={styles.nameText}>Пароль</Text>
+                    <Text style={styles.settingsText}>Сменить пароль аккаунта</Text>
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={showPinModal}>
-                <View style={[styles.settingTabs, styles.shadowProp]}>
-                    <Image source={require('../../assets/pin.png')} style={styles.iconSet} />
-                    <View style={styles.textView}>
-                        <Text style={styles.nameText}>PIN код</Text>
-                        <Text style={styles.settingsText}>Сменить PIN код входа в приложение</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
+            {/*<TouchableOpacity onPress={showPinModal}>*/}
+            {/*    <View style={[styles.settingTabs, styles.shadowProp]}>*/}
+            {/*        <Image source={require('../../assets/pin.png')} style={styles.iconSet} />*/}
+            {/*        <View style={styles.textView}>*/}
+            {/*            <Text style={styles.nameText}>PIN код</Text>*/}
+            {/*            <Text style={styles.settingsText}>Сменить PIN код входа в приложение</Text>*/}
+            {/*        </View>*/}
+            {/*    </View>*/}
+            {/*</TouchableOpacity>*/}
 
-            <Modal transparent={true} visible={passwordModalVisible} animationType="slide">
-                <TouchableWithoutFeedback onPress={hidePasswordModal}>
-                    <View style={styles.overlay}>
-                        <Animated.View
-                            style={[
-                                styles.modal,
-                                {
-                                    transform: [
-                                        {
-                                            translateY: new Animated.Value(300).interpolate({
-                                                inputRange: [0, 1],
-                                                outputRange: [300, 0],
-                                            }),
-                                        },
-                                    ],
-                                },
-                            ]}
-                        >
-                            <View style={{ backgroundColor: 'blue' }}>
-                                <Text>;slkfsdlfjlsdjlfsjdlfjlsjdflsdjfsldnfjslvkdfjkv</Text>
+            <KeyboardAvoidingView>
+                <Modal transparent={true} visible={passwordModalVisible} animationType="slide">
+                    <TouchableWithoutFeedback onPress={hidePasswordModal}>
+                        <View style={styles.overlay}>
+                            {/*/!*<Animated.ScrollView*!/*/}
+                            {/*    style={[*/}
+                            {/*        styles.modal,*/}
+                            {/*        {*/}
+                            {/*            opacity: fadeAnim,*/}
+                            {/*            // transform: [*/}
+                            {/*            //     {*/}
+                            {/*            //         translateY: new Animated.Value(300).interpolate({*/}
+                            {/*            //             inputRange: [0, 1],*/}
+                            {/*            //             outputRange: [300, 0],*/}
+                            {/*            //         }),*/}
+                            {/*            //     },*/}
+                            {/*            // ],*/}
+                            {/*        },*/}
+                            {/*    ]}*/}
+                            {/*>*/}
+                            <View style={styles.inner}>
+                                <View style={styles.changePassword}>
+                                    <Text style={styles.changePasswordMainTitleText}>Смена пароля</Text>
+
+                                    <View style={styles.inputGroup}>
+                                        <Text style={styles.changePasswordInfoText}>Старый пароль</Text>
+
+                                        <TextInput
+                                            placeholderTextColor={iconColors}
+                                            style={[styles.input, {color: iconColors}]}
+                                            keyboardType={'default'} placeholder={'Веедите старый пароль'}
+                                            secureTextEntry={true}
+                                            password={true}
+                                        />
+                                    </View>
+
+                                    <View style={styles.inputGroup}>
+                                        <Text style={styles.changePasswordInfoText}>Новый пароль</Text>
+
+                                        <TextInput
+                                            placeholderTextColor={iconColors}
+                                            style={[styles.input, {color: iconColors}]}
+                                            keyboardType={'default'} placeholder={'Веедите пароль'}
+                                            secureTextEntry={true}
+                                            password={true}
+                                        />
+                                    </View>
+
+                                    <View style={styles.inputGroup}>
+                                        <Text style={styles.changePasswordInfoText}>Повторите пароль</Text>
+
+                                        <TextInput
+                                            placeholderTextColor={iconColors}
+                                            style={[styles.input, {color: iconColors}]}
+                                            keyboardType={'default'} placeholder={'Веедите пароль '}
+                                            secureTextEntry={true}
+                                            password={true}
+                                        />
+                                    </View>
+
+                                    <View style={styles.updateButtonView}>
+                                        <TouchableOpacity
+                                            style={styles.updateButton}
+                                            onPress={goToSettingsPage}
+                                        >
+                                            <Text style={styles.updateButtonText}>Обновить данные</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                                {/*</Animated.ScrollView>*/}
                             </View>
-                        </Animated.View>
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
+                        </View>
 
-
-            <Modal visible={pinModalVisible} animationType="slide">
-                <TouchableWithoutFeedback onPress={hidePinModal}>
-                    <View style={styles.overlay}>
-                        <Animated.View
-                            style={[
-                                styles.modal,
-                                {
-                                    transform: [
-                                        {
-                                            translateY: new Animated.Value(300).interpolate({
-                                                inputRange: [0, 1],
-                                                outputRange: [300, 0],
-                                            }),
-                                        },
-                                    ],
-                                },
-                            ]}
-                        >
-                            <Text>Модальное окно для смены PIN кода</Text>
-                        </Animated.View>
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
+                    </TouchableWithoutFeedback>
+                </Modal>
+            </KeyboardAvoidingView>
         </View>
     );
 }

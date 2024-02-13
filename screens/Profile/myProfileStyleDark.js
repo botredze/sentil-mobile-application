@@ -3,8 +3,8 @@ import {BUTTONCOLORS, COLORS, FONT_COLORS} from "../../constants/colors";
 
 export const stylesDark = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: COLORS.mainBackgroundDark,
+        flex: 1
     },
 
     nav: {
@@ -12,6 +12,11 @@ export const stylesDark = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 15,
+    },
+
+    inner: {
+        backgroundColor: COLORS.mainBackgroundDark,
+        flex: 1
     },
 
     title: {
@@ -55,7 +60,7 @@ export const stylesDark = StyleSheet.create({
         borderWidth: 1,
         borderColor: COLORS.borderColorDark,
         padding: 15,
-        fontSize: 15,
+        fontSize: 16,
         borderRadius: 15,
         backgroundColor: COLORS.backgroundInputDark,
         width: '100%',
@@ -108,7 +113,7 @@ export const stylesDark = StyleSheet.create({
 
     updateButton: {
         width: '60%',
-        backgroundColor: BUTTONCOLORS.primary,
+        backgroundColor: BUTTONCOLORS.confirmBtn,
         height: 60,
         alignItems: "center",
         borderRadius: 15
@@ -125,10 +130,22 @@ export const stylesDark = StyleSheet.create({
     updateButtonText: {
         alignItems: "center",
         fontSize: 20,
-        color: '#fff',
+        color: FONT_COLORS.Lite,
         fontWeight: 'bold',
         lineHeight: 55
-    }
+    },
+
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowDark,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowDark,
+    },
 
 
 })

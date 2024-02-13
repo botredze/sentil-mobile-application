@@ -34,6 +34,22 @@ export const stylesLite = StyleSheet.create({
     },
 
 
+
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowLite,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowLite,
+    },
+
+
+
     sortBtn: {
         display: "flex",
         flexDirection: "row",
@@ -92,7 +108,7 @@ export const stylesLite = StyleSheet.create({
         height: 80,
         width:'100%',
         padding: 15,
-        gap: 10
+        gap: 10,
     },
 
     image: {

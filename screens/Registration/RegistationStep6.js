@@ -52,7 +52,7 @@ const Step6Screen = () => {
                         <TextInput
                             placeholder={'Введите адрес'}
                             placeholderTextColor={iconColors}
-                            style={[styles.input1, {color: iconColors}]}
+                            style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}
                         />
                     </View>

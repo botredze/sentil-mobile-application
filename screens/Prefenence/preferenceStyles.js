@@ -8,7 +8,10 @@ export const stylesLite = StyleSheet.create({
         // backgroundColor: 'red',
         height: '100%'
     },
-
+    scrollViewContainer: {
+        height: '100%',
+        backgroundColor: COLORS.mainBackgroundLite,
+    },
     title: {
         padding: 20,
         display: "flex",
@@ -54,10 +57,14 @@ export const stylesLite = StyleSheet.create({
     },
 
     themeContainer: {
+        //backgroundColor: 'red',
         display: "flex",
+        flexDirection: 'row',
+        alignItems: "center",
         gap: 10,
         padding: 15,
-        justifyContent: 'flex-start'
+        justifyContent: 'space-between'
+
     },
 
     themeTitle: {
@@ -75,7 +82,7 @@ export const stylesLite = StyleSheet.create({
     inputAddressSelector: {
         width: '100%',
         backgroundColor: COLORS.backgroundInputLite,
-        color: 'white',
+        color: FONT_COLORS.Lite,
         borderRadius: 15
     },
 

@@ -1,7 +1,6 @@
-import {Text, TouchableOpacity, View} from "react-native";
-import {styles, stylesLite} from "./birgaStakanStyles";
+import {Platform, Text, TouchableOpacity, View} from "react-native";
+import {stylesLite} from "./birgaStakanStyles";
 import {AntDesign, Ionicons} from "@expo/vector-icons";
-
 import { LineChart } from 'react-native-chart-kit';
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
@@ -14,7 +13,7 @@ export default function BirgStakan() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
-
+    let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
     let chartColors = isDarkTheme ? CHARTCOLORS.dark : CHARTCOLORS.lite
 
     let chartLineColors = isDarkTheme ? chartColorsGlobal.dark : chartColorsGlobal.lite
@@ -23,7 +22,7 @@ export default function BirgStakan() {
         datasets: [
             {
                 data: [50, 45, 35,],
-                strokeWidth: 4 // optional
+                strokeWidth: 4
             },
         ],
     };
@@ -44,7 +43,7 @@ export default function BirgStakan() {
                 <Text style={styles.titleText}>Фин.показатели</Text>
             </View>
 
-            <View style={styles.finView}>
+            <View style={[styles.finView, shadowProp]}>
                 <View style={styles.tableRow}>
                     <View style={{width: '40%'}}>
                         <Text style={styles.tableHeader}>Дата и время</Text>
@@ -113,12 +112,12 @@ export default function BirgStakan() {
 
 
             <View style={styles.buySellButtonGroup}>
-                <TouchableOpacity style={styles.buyBtn}>
+                <TouchableOpacity style={[styles.buyBtn, shadowProp]}>
                     <AntDesign name='arrowup' size={20} color='black'/>
                     <Text style={styles.replenishBtnText}>Купить</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.sellOffBtn}>
+                <TouchableOpacity style={[styles.sellOffBtn, shadowProp]}>
                     <AntDesign name='arrowdown' size={20} color='black'/>
                     <Text style={styles.takeOffBtnText}>Продать</Text>
                 </TouchableOpacity>

@@ -4,6 +4,7 @@ import {BUTTONCOLORS, COLORS, FONT_COLORS} from "../../../constants/colors";
 export const stylesLite = StyleSheet.create({
     container: {
         height: '97%',
+       // backgroundColor: 'red'
     },
 
     containerMain: {
@@ -12,7 +13,9 @@ export const stylesLite = StyleSheet.create({
         display: "flex",
         alignSelf: "center",
         padding: 30,
-        gap: 10
+        gap: 10,
+        //backgroundColor: 'blue',
+        height: '100%'
     },
 
     titleText: {
@@ -101,12 +104,11 @@ export const stylesLite = StyleSheet.create({
 
     btnGroup: {
         width: '100%',
-        height: 50,
         alignItems: "center",
         justifyContent: "center",
         alignSelf: "center",
-        left: '60%',
-        transform: [{translateX: -Dimensions.get('window').width / 2}],
+        // left: '60%',
+        // transform: [{translateX: -Dimensions.get('window').width / 2}],
         bottom: 20,
         position: "absolute",
         //backgroundColor: 'blue'

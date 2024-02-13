@@ -1,4 +1,4 @@
-import {ScrollView, Text, TouchableOpacity, View, Image} from "react-native";
+import {ScrollView, Text, TouchableOpacity, View, Image, Platform} from "react-native";
 import {stylesLite} from "./homePageStyles";
 import NavBar from "../../components/NavBar";
 import {useNavigation} from "@react-navigation/native";
@@ -12,6 +12,8 @@ export default function HomeScreen() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
 
     let styles = isDarkTheme ? stylesDark : stylesLite
+
+    let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
 
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.dark
     const goToInvestList = () => {
@@ -74,7 +76,7 @@ export default function HomeScreen() {
 
             </View>
 
-            <View style={styles.investBtnContainer}>
+            <View style={[styles.investBtnContainer, shadowProp]}>
                 <TouchableOpacity
                     style={styles.investBtn}
                     onPress={goToInvestList}
@@ -84,12 +86,12 @@ export default function HomeScreen() {
             </View>
 
 
-            <View style={styles.populer}>
+            <View style={[styles.populer, shadowProp]}>
                 <View style={styles.populerTitle}><Text style={styles.populerTitleText}>Самые
                     популярные</Text></View>
                 <View style={styles.populerBox}>
 
-                    <TouchableOpacity style={styles.populerItem}
+                    <TouchableOpacity style={[styles.populerItem, shadowProp]}
                                       onPress={goToBirgaStakan}
                     >
                         <Image
@@ -105,7 +107,7 @@ export default function HomeScreen() {
                         </TouchableOpacity>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.populerItem}>
+                    <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                         {/*<imagePath*/}
                         {/*    width={100}*/}
                         {/*    height={100}*/}
@@ -118,7 +120,7 @@ export default function HomeScreen() {
                             <Text style={styles.summText}>275.6 сом</Text>
                         </TouchableOpacity>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.populerItem}>
+                    <TouchableOpacity style={[styles.populerItem, shadowProp]}>
 
                         <Image
                             source={require('../../assets/visa.svg')} // Укажите путь к вашей фотографии
@@ -134,7 +136,7 @@ export default function HomeScreen() {
 
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.populerItem}>
+                    <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                         <Image
                             source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                             style={styles.backgroundImage}
@@ -148,7 +150,7 @@ export default function HomeScreen() {
                         </TouchableOpacity>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.populerItem}>
+                    <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                         <Image
                             source={require('../../assets/visa.svg')} // Укажите путь к вашей фотографии
                             style={styles.backgroundImage}
@@ -162,7 +164,7 @@ export default function HomeScreen() {
                         </TouchableOpacity>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.populerItem}>
+                    <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                         <Image
                             source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                             style={styles.backgroundImage}

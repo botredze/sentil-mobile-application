@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity, View, Image} from "react-native";
+import {Text, TouchableOpacity, View, Image, Platform} from "react-native";
 import {styles} from "./settingsStyles";
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
@@ -24,6 +24,7 @@ export default function Settings() {
         navigation.navigate('Profile')
     };
 
+    let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
 
     const goToSecureSettings = () => {
         navigation.navigate('Security')
@@ -45,10 +46,11 @@ export default function Settings() {
                     onPress={logoutHandler}
                 >
                     <Text style={styles.logoutText}>Выйти</Text>
-                    <Ionicons name='power' size={30} color='red'/>
+                   {/* <Ionicons name='power' size={30} color='red'/>*/}
                 </TouchableOpacity>
             </View>
 
+            
 
             <View style={[styles.profileView]}>
                 <View>
@@ -61,7 +63,7 @@ export default function Settings() {
             </View>
 
             <TouchableOpacity
-                style={[styles.settingTabs, styles.shadowProp]}
+                style={[styles.settingTabs, shadowProp]}
                 onPress={goToMyProfile}
             >
                 <Image source={require('../../assets/user.png')} style={styles.iconSet}/>
@@ -73,7 +75,7 @@ export default function Settings() {
 
 
             <TouchableOpacity
-                style={[styles.settingTabs, styles.shadowProp]}
+                style={[styles.settingTabs, shadowProp]}
                 onPress={goToSecureSettings}
             >
                 <Image source={require('../../assets/secyrity.png')} style={styles.iconSet}/>
@@ -84,7 +86,7 @@ export default function Settings() {
             </TouchableOpacity>
 
             <TouchableOpacity
-                style={[styles.settingTabs, styles.shadowProp]}
+                style={[styles.settingTabs, shadowProp]}
                 onPress={goToPreference}
             >
                 <Image source={require('../../assets/setting.png')} style={styles.iconSet}/>

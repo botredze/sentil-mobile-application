@@ -1,4 +1,4 @@
-import {Image, Switch, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {Image, KeyboardAvoidingView, Switch, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {liteStyles} from './loginStyles'
 import {useNavigation} from "@react-navigation/native";
 import React, {useState} from "react";
@@ -57,7 +57,7 @@ export default function LoginScreen() {
                         <View style={styles.inputGroup}>
                             <Text style={styles.titleText}>Логин</Text>
                             <TextInput
-                                placeholder={'Введите адресс электронной почты'}
+                                placeholder={'Введите логин'}
                                 placeholderTextColor={iconColors}
                                 style={[styles.input, {color: iconColors}]}
                                 keyboardType={'email-address'}
@@ -100,10 +100,10 @@ export default function LoginScreen() {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.footerLogo}>
-                        <Text style={styles.footerText}>Цифровые решения</Text>
-                        <Text style={styles.footerCompanyText}>Business Soft</Text>
-                    </View>
+                </View>
+                <View style={styles.footerLogo}>
+                    <Text style={styles.footerText}>Цифровые решения</Text>
+                    <Text style={styles.footerCompanyText}>Business Soft</Text>
                 </View>
             </View>
         </View>

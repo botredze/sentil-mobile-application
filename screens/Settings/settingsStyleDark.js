@@ -14,6 +14,7 @@ export const stylesDark = StyleSheet.create({
         padding: 15,
 
     },
+
     profileView: {
         width: '90%',
         height: 200,
@@ -29,16 +30,23 @@ export const stylesDark = StyleSheet.create({
 
     logoutText: {
         lineHeight: 29,
-        fontSize: 18,
-        color: FONT_COLORS.Dark
+        fontSize: 21,
+        color: FONT_COLORS.down,
+        paddingRight: 5
     },
 
 
     shadowProp: {
         shadowOffset: {width: -2, height: 4},
         shadowColor: COLORS.shadowDark,
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowDark,
     },
 
     profilePhoto: {
@@ -87,11 +95,11 @@ export const stylesDark = StyleSheet.create({
     settingTabs: {
         alignSelf: 'center',
         marginTop: 15,
-        padding: 15,
+        padding: 10,
         width: '90%',
         height: 80,
         backgroundColor: COLORS.cardContainerDark,
-        borderRadius: 25,
+        borderRadius: 15,
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",

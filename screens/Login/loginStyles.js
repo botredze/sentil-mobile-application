@@ -1,10 +1,12 @@
 import {Dimensions, StyleSheet} from "react-native";
-import {COLORS, FONT_COLORS} from "../../constants/colors";
+import {BUTTONCOLORS, CARD_CONTAINER_COLORS, COLORS, FONT_COLORS} from "../../constants/colors";
 
 
 export const liteStyles = StyleSheet.create({
     loginSreenParent: {
         position: "relative",
+        flex: 1,
+        backgroundColor: COLORS.mainBackgroundLite,
     },
 
     container: {
@@ -12,9 +14,12 @@ export const liteStyles = StyleSheet.create({
     },
 
     loginParentChild: {
-        height: '100%',
+        //height: '100%',
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'red'
     },
-
     image: {
         width: '100%',
         height: '100%'
@@ -37,15 +42,17 @@ export const liteStyles = StyleSheet.create({
         height: 50,
         borderRadius: 15,
         borderColor: COLORS.borderColorLite,
-        padding: 10
+        padding: 15,
+        fontSize: 16
     },
 
     inputGroup: {
         display: "flex",
         alignSelf: "center",
         alignItems: "center",
-        width: '90%',
-        gap: 5
+        width: '100%',
+        gap: 7,
+        //backgroundColor: 'red'
     },
 
     loginButtonContainer: {
@@ -69,23 +76,34 @@ export const liteStyles = StyleSheet.create({
         marginTop: 20
     },
 
+    // footerLogo: {
+    //     width: '100%',
+    //     height: 60,
+    //     position: 'absolute',
+    //     bottom: 20,
+    //     // left: '50%',
+    //     // transform: [{ translateX: -Dimensions.get('window').width / 2 }],
+    //     alignSelf: "center",
+    //     alignItems: "center",
+    //     gap: 5,
+    // },
     footerLogo: {
         width: '100%',
         height: 60,
-        position: 'absolute',
-        bottom: 50,
-        left: '50%',
-        transform: [{ translateX: -Dimensions.get('window').width / 2 }],
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 5,
+        marginBottom: 0, // Применяем отрицательный отступ
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'fixed',
+        bottom: -150,
+       // backgroundColor: 'red'
     },
 
     inputGroupContainer: {
         display: "flex",
         gap: 15,
-        marginTop: 20
+        marginTop: 20,
+        width: '100%',
     },
     titleText: {
         fontSize: 17,
@@ -93,17 +111,17 @@ export const liteStyles = StyleSheet.create({
     },
 
     loginBtn: {
-        backgroundColor: '#e7d51c',
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
         borderRadius: 15,
         height: 45,
-        width: '55%',
+        width: '65%',
         alignItems: "center",
     },
     loginText: {
         fontSize: 25,
         lineHeight: 45,
         fontWeight: "bold",
-        color: FONT_COLORS.Lite
+        color: FONT_COLORS.Dark
     },
 
     forgotBtn: {

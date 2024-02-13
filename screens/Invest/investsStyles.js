@@ -110,6 +110,19 @@ export const investStyleLite = StyleSheet.create({
         color: FONT_COLORS.summText
     },
 
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowLite,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowLite,
+    },
+
     sortButtonGroup: {
         display: "flex",
         flexDirection: "row",

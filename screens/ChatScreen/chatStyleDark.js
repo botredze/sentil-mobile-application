@@ -1,12 +1,13 @@
 import {StyleSheet} from "react-native";
-import {COLORS, FONT_COLORS} from "../../constants/colors";
+import {CARD_CONTAINER_COLORS, COLORS, FONT_COLORS} from "../../constants/colors";
 
 export const stylesDark = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS.mainBackgroundDark,
         flexGrow: 1,
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        padding: 5
     },
 
     messageContainer: {
@@ -17,14 +18,17 @@ export const stylesDark = StyleSheet.create({
     myMessage: {
         justifyContent: 'flex-end',
     },
-    msgText: {
-        color: FONT_COLORS.Dark
-    },
     messageBubble: {
-        backgroundColor: COLORS.borderColorDark,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
         borderRadius: 10,
         padding: 10,
     },
+
+    msgText: {
+        color: FONT_COLORS.Dark,
+        fontSize: 16
+    },
+
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',

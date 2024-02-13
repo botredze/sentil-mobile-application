@@ -1,4 +1,4 @@
-import {TouchableOpacity, View, Text, Image} from "react-native";
+import {TouchableOpacity, View, Text, Image, Platform} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
@@ -12,7 +12,7 @@ export default function Obligations() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
 
     let styles = isDarkTheme ? stylesDark : stylesLite
-
+    let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     
     const navigation = useNavigation();
@@ -33,26 +33,26 @@ export default function Obligations() {
 
             <View style={styles.title}><Text style={styles.profileText}>Мой портфель </Text></View>
 
-            <View style={styles.sortButtonGroup}>
+            {/*<View style={styles.sortButtonGroup}>*/}
 
-                <TouchableOpacity style={styles.sortBtn}>
-                    <Text style={styles.buttonText}>Акции</Text><Text style={styles.countText}>[10]</Text>
-                </TouchableOpacity>
+            {/*    <TouchableOpacity style={styles.sortBtn}>*/}
+            {/*        <Text style={styles.buttonText}>Акции</Text><Text style={styles.countText}>[10]</Text>*/}
+            {/*    </TouchableOpacity>*/}
 
-                <TouchableOpacity style={styles.sortBtn}>
-                    <Text style={styles.buttonText}>Фонды</Text>
-                    <Text style={styles.countText}>[10]</Text>
-                </TouchableOpacity>
+            {/*    <TouchableOpacity style={styles.sortBtn}>*/}
+            {/*        <Text style={styles.buttonText}>Фонды</Text>*/}
+            {/*        <Text style={styles.countText}>[10]</Text>*/}
+            {/*    </TouchableOpacity>*/}
 
-                <TouchableOpacity style={styles.sortBtnObl}>
-                    <Text style={styles.buttonText}>Облигации</Text>
-                    <Text style={styles.countText}>[10]</Text>
-                </TouchableOpacity>
-            </View>
+            {/*    <TouchableOpacity style={styles.sortBtnObl}>*/}
+            {/*        <Text style={styles.buttonText}>Облигации</Text>*/}
+            {/*        <Text style={styles.countText}>[10]</Text>*/}
+            {/*    </TouchableOpacity>*/}
+            {/*</View>*/}
 
             <View style={{display: 'flex', gap: 15}}>
-                <View style={styles.reestrMainContainer}>
-                    <TouchableOpacity style={styles.reestrContent}>
+                <View style={[styles.reestrMainContainer, shadowProp]}>
+                    <TouchableOpacity style={[styles.reestrContent, shadowProp]}>
                         <Image
                             source={require('../../assets/yandex.png')}
                             style={styles.image}
@@ -76,8 +76,8 @@ export default function Obligations() {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.reestrMainContainer}>
-                    <TouchableOpacity style={styles.reestrContent}>
+                <View style={[styles.reestrMainContainer, shadowProp]}>
+                    <TouchableOpacity style={[styles.reestrContent, shadowProp]}>
                         <Image
                             source={require('../../assets/yandex.png')}
                             style={styles.image}
@@ -100,8 +100,8 @@ export default function Obligations() {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.reestrMainContainer}>
-                    <TouchableOpacity style={styles.reestrContent}>
+                <View style={[styles.reestrMainContainer, shadowProp]}>
+                    <TouchableOpacity style={[styles.reestrContent, shadowProp]}>
                         <Image
                             source={require('../../assets/yandex.png')}
                             style={styles.image}

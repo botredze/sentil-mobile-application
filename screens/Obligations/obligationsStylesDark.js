@@ -34,6 +34,22 @@ export const stylesDark = StyleSheet.create({
     },
 
 
+
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowDark,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowDark,
+    },
+
+
+
     sortBtn: {
         display: "flex",
         flexDirection: "row",

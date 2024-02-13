@@ -26,19 +26,26 @@ export const stylesLite = StyleSheet.create({
         gap: 30,
         marginBottom: 20
     },
-
     logoutText: {
         lineHeight: 29,
-        fontSize: 18,
-        color: FONT_COLORS.Lite
+        fontSize: 21,
+        color: FONT_COLORS.down,
+        paddingRight: 5
     },
 
     shadowProp: {
         shadowOffset: {width: -2, height: 4},
         shadowColor: COLORS.shadowLite,
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
     },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowLite,
+    },
+
 
     profilePhoto: {
         width: 100,
@@ -86,11 +93,11 @@ export const stylesLite = StyleSheet.create({
     settingTabs: {
         alignSelf: 'center',
         marginTop: 15,
-        padding: 15,
+        padding: 10,
         width: '90%',
         height: 80,
         backgroundColor: COLORS.cardContainerLite,
-        borderRadius: 25,
+        borderRadius: 15,
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",

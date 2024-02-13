@@ -103,8 +103,8 @@ export const stylesDark = StyleSheet.create({
     },
 
     investBtn: {
-        backgroundColor: BUTTONCOLORS.invesBtn ,
-        width: '90%',
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        width: '100%',
         alignItems: 'center',
         padding: 10,
         borderRadius: 15,
@@ -116,6 +116,21 @@ export const stylesDark = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         padding: 10
+    },
+
+
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowDark,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowDark,
+
     },
 
     replenishBtnText: {
@@ -131,11 +146,10 @@ export const stylesDark = StyleSheet.create({
     },
 
     investBtnText: {
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: '600',
-        lineHeight: 40,
+        lineHeight: 35,
         color: FONT_COLORS.Dark
-
     },
     balanceContainer: {
         alignSelf: 'center',
@@ -175,16 +189,15 @@ export const stylesDark = StyleSheet.create({
         justifyContent: "space-between",
         //alignItems: 'center'
     },
-
     populer: {
         backgroundColor: COLORS.backgroundCardDark,
         alignSelf: 'center',
-        width: '90%',
-        borderRadius: 35,
+        width: '95%',
+        borderRadius: 20,
         display: "flex",
         flexDirection: "column",
-        marginTop: 30,
-        height: 550
+        marginTop: 10,
+        height: 560
 
     },
     populerTitleText: {

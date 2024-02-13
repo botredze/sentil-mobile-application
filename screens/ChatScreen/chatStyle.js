@@ -1,12 +1,13 @@
 import {StyleSheet} from "react-native";
-import {COLORS, FONT_COLORS} from "../../constants/colors";
+import {CARD_CONTAINER_COLORS, COLORS, FONT_COLORS} from "../../constants/colors";
 
 export const stylesLite = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS.mainBackgroundLite,
         flexGrow: 1,
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        padding: 5
     },
 
     messageContainer: {
@@ -18,13 +19,14 @@ export const stylesLite = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     messageBubble: {
-        backgroundColor: COLORS.borderColorLite,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
         borderRadius: 10,
         padding: 10,
     },
 
     msgText: {
-        color: FONT_COLORS.Lite
+        color: FONT_COLORS.Dark,
+        fontSize: 16
     },
 
     inputContainer: {

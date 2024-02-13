@@ -9,6 +9,10 @@ export const stylesDark = StyleSheet.create({
         height: '100%'
     },
 
+    scrollViewContainer: {
+        height: '100%',
+        backgroundColor: COLORS.mainBackgroundDark,
+    },
     title: {
         padding: 20,
         display: "flex",
@@ -54,10 +58,14 @@ export const stylesDark = StyleSheet.create({
     },
 
     themeContainer: {
+        //backgroundColor: 'red',
         display: "flex",
+        flexDirection: 'row',
+        alignItems: "center",
         gap: 10,
         padding: 15,
-        justifyContent: 'flex-start'
+        justifyContent: 'space-between'
+
     },
 
     themeTitle: {
@@ -75,7 +83,7 @@ export const stylesDark = StyleSheet.create({
     inputAddressSelector: {
         width: '100%',
         backgroundColor: COLORS.backgroundInputDark,
-        color: 'white',
+        color: FONT_COLORS.Dark,
         borderRadius: 15
     },
 

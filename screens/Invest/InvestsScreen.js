@@ -1,4 +1,4 @@
-import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Image, Platform, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {investStyleLite, styles} from "./investsStyles";
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
@@ -12,7 +12,7 @@ export default function InvestsScreen() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
 
     let styles = isDarkTheme ? investStyleDark : investStyleLite
-
+    let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     const goToBirgaStakan = () => {
         navigation.navigate('BirgStakan');
@@ -31,27 +31,27 @@ export default function InvestsScreen() {
             <View style={styles.sortButtonGroup}>
 
                 <TouchableOpacity
-                    style={styles.sortBtn}>
+                    style={[styles.sortBtn,  shadowProp]}>
                     <Text style={styles.buttonText}>Акции</Text><Text style={styles.countText}>[10]</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.sortBtn}>
+                <TouchableOpacity style={[styles.sortBtn,  shadowProp]}>
                     <Text style={styles.buttonText}>Фонды</Text>
                     <Text style={styles.countText}>[10]</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.sortBtnObl}>
+                <TouchableOpacity style={[styles.sortBtn,  shadowProp]}>
                     <Text style={styles.buttonText}>Облигации</Text>
                     <Text style={styles.countText}>[10]</Text>
                 </TouchableOpacity>
             </View>
 
             <ScrollView style={styles.tableContainer}>
-                <View style={styles.populerBox}>
+                <View style={[styles.populerBox, shadowProp]}>
                     <View style={styles.populerColumn}>
 
                         <TouchableOpacity
-                            style={styles.populerItem}
+                            style={[styles.populerItem, shadowProp]}
                             onPress = {goToBirgaStakan}
                         >
                             <Image
@@ -68,7 +68,7 @@ export default function InvestsScreen() {
                             </TouchableOpacity>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/visa.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -82,7 +82,7 @@ export default function InvestsScreen() {
                             </TouchableOpacity>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -95,7 +95,7 @@ export default function InvestsScreen() {
                                 <Text style={styles.summText}>275.6 сом</Text>
                             </TouchableOpacity>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -108,7 +108,7 @@ export default function InvestsScreen() {
                                 <Text style={styles.summText}>275.6 сом</Text>
                             </TouchableOpacity>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -121,7 +121,7 @@ export default function InvestsScreen() {
                                 <Text style={styles.summText}>275.6 сом</Text>
                             </TouchableOpacity>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -139,7 +139,7 @@ export default function InvestsScreen() {
 
                     <View style={styles.populerColumn}>
 
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/yandex.png')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -153,7 +153,7 @@ export default function InvestsScreen() {
                                 <Text style={styles.summText}>275.6 сом</Text>
                             </TouchableOpacity>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/yandex.png')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -167,7 +167,7 @@ export default function InvestsScreen() {
                                 <Text style={styles.summText}>275.6 сом</Text>
                             </TouchableOpacity>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/yandex.png')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -182,7 +182,7 @@ export default function InvestsScreen() {
                             </TouchableOpacity>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
 
                             <Image
                                 source={require('../../assets/visa.svg')} // Укажите путь к вашей фотографии
@@ -198,7 +198,7 @@ export default function InvestsScreen() {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/mastercard.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}
@@ -212,7 +212,7 @@ export default function InvestsScreen() {
                             </TouchableOpacity>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.populerItem}>
+                        <TouchableOpacity style={[styles.populerItem, shadowProp]}>
                             <Image
                                 source={require('../../assets/visa.svg')} // Укажите путь к вашей фотографии
                                 style={styles.backgroundImage}

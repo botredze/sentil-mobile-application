@@ -17,7 +17,7 @@ import ReginstrationScreen from "./screens/Registration/ReginstrationScreen";
 import {Provider, useSelector} from 'react-redux';
 import store from './redux/store';
 import BirgStakan from "./screens/BirgaStakan/BirgStakan";
-import {StatusBar} from "react-native"; //
+import {Platform, StatusBar} from "react-native"; //
 import {SafeAreaView} from 'react-native-safe-area-context'
 import PreferenceScreen from "./screens/Prefenence/PreferenceScreen";
 import {COLORS, FONT_COLORS} from "./constants/colors";
@@ -78,10 +78,11 @@ const HomeTabs = () => {
 const NavigationUses = () => {
 
     const isDarkTheme = useSelector(selectIsDarkTheme);
+
     return (
         <NavigationContainer>
             <StatusBar backgroundColor={isDarkTheme ? COLORS.mainBackgroundDark : COLORS.mainBackgroundLite} barStyle={isDarkTheme ? 'light-content' : 'dark-content'} />
-            <SafeAreaView style={{ flex: 1, backgroundColor: isDarkTheme ? COLORS.mainBackgroundDark : COLORS.mainBackgroundLite }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: isDarkTheme ? COLORS.mainBackgroundDark : COLORS.mainBackgroundLite, marginTop: Platform.OS === 'ios' ? 35 : 0}}>
                 <Stack.Navigator
                     initialRouteName="login"
                     screenOptions={{headerShown: false, headerShadowVisible: true}}

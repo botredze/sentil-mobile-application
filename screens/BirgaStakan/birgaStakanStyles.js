@@ -1,9 +1,10 @@
 import {StyleSheet} from "react-native";
+import {BUTTONCOLORS, COLORS, FONT_COLORS} from "../../constants/colors";
 
 export const stylesLite = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F3F5F6',
+        backgroundColor: COLORS.mainBackgroundLite,
     },
 
     nav: {
@@ -11,6 +12,19 @@ export const stylesLite = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 15,
+    },
+
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowLite,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowLite,
     },
 
     title: {
@@ -23,24 +37,28 @@ export const stylesLite = StyleSheet.create({
 
     titleText: {
         fontSize: 20,
+        color: FONT_COLORS.Lite
+
     },
 
     profileText: {
         fontSize: 25,
         fontWeight: "bold",
+        color: FONT_COLORS.Lite
     },
 
     finView: {
         marginTop: 30,
         display: "flex",
         alignSelf: "center",
-        backgroundColor: '#Fff',
+        backgroundColor: COLORS.cardLite,
         bottom: 15,
         borderRadius: 14,
         width: '95%',
         height: 150,
         padding: 15
     },
+
     tableRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -54,10 +72,12 @@ export const stylesLite = StyleSheet.create({
         flex: 1,
         fontWeight: 'bold',
         textAlign: 'center',
+        color: FONT_COLORS.Lite
     },
     tableCell: {
         flex: 1,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: FONT_COLORS.Lite
     },
     tableCellDate: {
         flex: 1,
@@ -84,7 +104,7 @@ export const stylesLite = StyleSheet.create({
         gap: 5,
         justifyContent: 'center',
         alignItems: "center",
-        backgroundColor: '#0ecb81',
+        backgroundColor: BUTTONCOLORS.primary,
         padding: 10,
         width: '40%',
         height: 40,
@@ -96,7 +116,7 @@ export const stylesLite = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         gap: 8,
-        backgroundColor: '#f6465d',
+        backgroundColor: BUTTONCOLORS.secondary,
         alignItems: "center",
         padding: 10,
         width: '40%',
@@ -109,6 +129,7 @@ export const stylesLite = StyleSheet.create({
         display: "flex",
         alignItems: 'center',
         justifyContent: 'center',
-        alignSelf: "center"
+        alignSelf: "center",
+        width: '98%'
     }
 })

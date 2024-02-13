@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from "react-native";
-import {COLORS, FONT_COLORS} from "../../constants/colors";
+import {BUTTONCOLORS, COLORS, FONT_COLORS} from "../../constants/colors";
 
 export const stylesLite = StyleSheet.create({
     container: {
@@ -53,7 +53,7 @@ export const stylesLite = StyleSheet.create({
     input: {
         height: 60,
         borderWidth: 1,
-        borderColor: 'gray',
+        borderColor: COLORS.borderColorLite,
         padding: 15,
         fontSize: 15,
         borderRadius: 15,
@@ -65,6 +65,20 @@ export const stylesLite = StyleSheet.create({
             },
             android: {},
         }),
+    },
+
+
+    shadowProp: {
+        shadowOffset: {width: -2, height: 4},
+        shadowColor: COLORS.shadowLite,
+        shadowOpacity: 0.4,
+        shadowRadius: 4,
+    },
+
+
+    elevation: {
+        elevation: 10,
+        shadowColor: COLORS.shadowLite,
     },
 
 
@@ -107,7 +121,7 @@ export const stylesLite = StyleSheet.create({
 
     updateButton: {
         width: '60%',
-        backgroundColor: 'rgba(67,159,234,0.57)',
+        backgroundColor: BUTTONCOLORS.confirmBtn,
         height: 60,
         alignItems: "center",
         borderRadius: 15
@@ -124,7 +138,7 @@ export const stylesLite = StyleSheet.create({
     updateButtonText: {
         alignItems: "center",
         fontSize: 20,
-        color: '#fff',
+        color: FONT_COLORS.Lite,
         fontWeight: 'bold',
         lineHeight: 55
     }
