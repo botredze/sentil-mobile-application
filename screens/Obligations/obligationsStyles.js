@@ -127,7 +127,7 @@ export const stylesLite = StyleSheet.create({
     summInfoText: {
     },
     summView: {
-        backgroundColor: '#ffd950',
+        backgroundColor: COLORS.summContainerDark,
         height: 20,
         width: 80,
         borderRadius: 10,

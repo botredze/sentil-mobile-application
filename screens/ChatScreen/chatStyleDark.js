@@ -19,7 +19,7 @@ export const stylesDark = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     messageBubble: {
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorLite,
         borderRadius: 10,
         padding: 10,
     },

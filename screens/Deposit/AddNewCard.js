@@ -15,6 +15,6 @@ const AddNewCard = () => {
 export  const styles = StyleSheet.create({
     container: {
         backgroundColor: COLORS.mainBackgroundLite,
+        flex: 1,
     },
-
 })

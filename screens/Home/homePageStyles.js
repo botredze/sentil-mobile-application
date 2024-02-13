@@ -97,7 +97,7 @@ export const stylesLite = StyleSheet.create({
     },
 
     investBtn: {
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorLite,
         width: '100%',
         alignItems: 'center',
         padding: 10,
@@ -134,7 +134,7 @@ export const stylesLite = StyleSheet.create({
         // display: 'flex',
         // flexDirection: 'column',
         // justifyContent: 'center',
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorLite,
         width: '95%',
         height: 215,
         borderRadius: 30,
@@ -259,13 +259,15 @@ export const stylesLite = StyleSheet.create({
     },
 
     ablicationSumm: {
-        backgroundColor: 'yellow',
+        backgroundColor: COLORS.summContainerDark,
         alignItems: "center",
         borderRadius: 10,
-        width: '60%'
+        height: 25,
+        width: '70%'
     },
     summText: {
-        color: FONT_COLORS.Lite
+        color: FONT_COLORS.Lite,
+        fontSize: 17
     },
 
     moneyIcon: {
@@ -279,7 +281,7 @@ export const stylesLite = StyleSheet.create({
         height: 100,
         // marginRight: 10,
         position: 'absolute',
-        bottom: 0,
+        bottom: 26,
         right: 0,
     },
 

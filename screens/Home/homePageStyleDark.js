@@ -103,7 +103,7 @@ export const stylesDark = StyleSheet.create({
     },
 
     investBtn: {
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorDark,
         width: '100%',
         alignItems: 'center',
         padding: 10,
@@ -156,7 +156,7 @@ export const stylesDark = StyleSheet.create({
         // display: 'flex',
         // flexDirection: 'column',
         // justifyContent: 'center',
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorDark,
         width: '95%',
         height: 215,
         borderRadius: 30,

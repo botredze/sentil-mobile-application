@@ -19,8 +19,8 @@ const COLORS = {
     cardDark: '#868585',
     cardLite: '#e3e3e3',
 
-    summContainerLite: '#ffd950',
-    summContainerDark: '#ffc400',
+    summContainerLite: '#fff52c',
+    summContainerDark: 'yellow',
 
     shadowDark: '#000000',
     shadowLite: '#000000',
@@ -38,7 +38,8 @@ const COLORS = {
 }
 
 const CARD_CONTAINER_COLORS = {
-    balanceContanerColor: '#177DFF',
+    balanceContanerColorDark:  '#177DFF',
+    balanceContanerColorLite: 'rgba(8,91,197,0.75)',
     fondColors: '#FFFFFF',
     primaryColor: '#000000',
     defaultBtnColor: 'rgba(255,255,255,0.2)'

@@ -57,7 +57,7 @@ export default function PreferenceScreen() {
 
                 <View style={styles.themeTitle}><Text style={styles.themeTitleText}>Выберите тему</Text></View>
                 <View style={styles.themeContainer}>
-                    <Text style={styles.settingsText}>Исользовать темную тему</Text>
+                    <Text style={styles.settingsText}>Использовать темную тему</Text>
                     <Switch
                         trackColor={{false: '#767577', true: '#81b0ff'}}
                         thumbColor={isDarkTheme ? '#f5dd4b' : '#f4f3f4'}

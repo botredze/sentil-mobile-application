@@ -28,23 +28,9 @@ const Step1Screen = () => {
     };
 
     return (
-        <KeyboardAvoidingView behavior="padding">
-            <View style={styles.container}>
-                {/*<PDFViewer pdfPath={require('../assets/lisence_soglasie.pdf')}/>*/}
-                <View style={{height: 240, marginTop: 30}}>
-
-                    <Text style={styles.sendCodeSMS}>Здесь будет документ согласие и лицензии</Text>
-                    <Text style={styles.sendCodeSMS}>Не доступно в режиме разработки</Text>
-
-                </View>
-
-                {/*<View style={styles.nextButton}>*/}
-                {/*    <TouchableOpacity onPress={handlePDFViewed}>*/}
-                {/*        <Text style={styles.nextBtnText}>Я просмотрел документ</Text>*/}
-                {/*    </TouchableOpacity>*/}
-                {/*</View>*/}
+            <View style={styles.containerPdf}>
+                <PDFViewer/>
             </View>
-        </KeyboardAvoidingView>
     );
 };
 

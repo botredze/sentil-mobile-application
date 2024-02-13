@@ -111,7 +111,7 @@ export const liteStyles = StyleSheet.create({
     },
 
     loginBtn: {
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColor,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorLite,
         borderRadius: 15,
         height: 45,
         width: '65%',

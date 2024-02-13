@@ -11,8 +11,25 @@ export const stylesDark = StyleSheet.create({
         backgroundColor:  COLORS.mainBackgroundDark,
         display: "flex",
         alignSelf: "center",
-        padding: 30,
-        gap: 10
+        padding: 20,
+        gap: 10,
+        //backgroundColor: 'blue',
+        height: '100%'
+    },
+
+    pdf: {
+        flex: 1,
+        alignSelf: 'stretch'
+    },
+
+    containerPdf: {
+        flex: 1,
+        //backgroundColor: COLORS.mainBackgroundLite,
+        alignItems: "center",
+        justifyContent: 'center',
+        backgroundColor: 'red',
+        width: '100%',
+        height: 100
     },
 
     titleText: {

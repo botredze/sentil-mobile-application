@@ -113,7 +113,7 @@ export const stylesDark = StyleSheet.create({
 
     updateButton: {
         width: '60%',
-        backgroundColor: BUTTONCOLORS.confirmBtn,
+        backgroundColor: BUTTONCOLORS.primary,
         height: 60,
         alignItems: "center",
         borderRadius: 15
@@ -130,7 +130,7 @@ export const stylesDark = StyleSheet.create({
     updateButtonText: {
         alignItems: "center",
         fontSize: 20,
-        color: FONT_COLORS.Lite,
+        color: FONT_COLORS.Dark,
         fontWeight: 'bold',
         lineHeight: 55
     },

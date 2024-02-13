@@ -4,18 +4,32 @@ import {BUTTONCOLORS, COLORS, FONT_COLORS} from "../../../constants/colors";
 export const stylesLite = StyleSheet.create({
     container: {
         height: '97%',
-       // backgroundColor: 'red'
+        //backgroundColor: 'red'
     },
 
+    containerPdf: {
+        flex: 1,
+        //backgroundColor: COLORS.mainBackgroundLite,
+        alignItems: "center",
+        justifyContent: 'center',
+      //  backgroundColor: 'red',
+        width: '100%',
+        height: 100
+    },
     containerMain: {
         width: '100%',
         backgroundColor:  COLORS.mainBackgroundLite,
         display: "flex",
         alignSelf: "center",
-        padding: 30,
+        padding: 20,
         gap: 10,
         //backgroundColor: 'blue',
         height: '100%'
+    },
+
+    pdf: {
+    flex: 1,
+    alignSelf: 'stretch'
     },
 
     titleText: {
@@ -119,7 +133,7 @@ export const stylesLite = StyleSheet.create({
     },
 
     loginSreenParent: {
-        // backgroundColor:"red"
+       //  backgroundColor:"glue "
     },
 
     inputDate: {
