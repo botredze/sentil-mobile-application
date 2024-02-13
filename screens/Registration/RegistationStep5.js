@@ -5,14 +5,12 @@ import {incrementStep, selectPdfViewed} from '../../redux/slieces/registrationSl
 import {Ionicons} from "@expo/vector-icons";
 import * as DocumentPicker from 'expo-document-picker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {styles, stylesLite} from "./styles/registrationStyles";
+import { stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
 
 const Step5Screen = () => {
-    const dispatch = useDispatch();
-    const pdfViewed = useSelector(selectPdfViewed);
     const isDarkTheme = useSelector(selectIsDarkTheme);
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
@@ -27,7 +25,8 @@ const Step5Screen = () => {
         try {
             const document = await DocumentPicker.getDocumentAsync();
             if (document) {
-                await AsyncStorage.setItem('passportFront', document);
+                console.log(document);
+                await AsyncStorage.setItem('passportFront', JSON.stringify(document));
                 setPassportFront(document.assets[0].uri);
             } else {
                 console.log('Загрузка документа отменена');
@@ -42,7 +41,7 @@ const Step5Screen = () => {
         try {
             const document = await DocumentPicker.getDocumentAsync();
             if (document) {
-                await AsyncStorage.setItem('passportBack', document);
+                await AsyncStorage.setItem('passportBack',  JSON.stringify(document));
                 setPassportBack(document.assets[0].uri);
             }
         } catch (error) {
@@ -54,7 +53,7 @@ const Step5Screen = () => {
         try {
             const document = await DocumentPicker.getDocumentAsync();
             if (document) {
-                await AsyncStorage.setItem('selfieWithPassport', document);
+                await AsyncStorage.setItem('selfieWithPassport',  JSON.stringify(document));
                 setSelfieWithPassport(document.assets[0].uri);
             }
         } catch (error) {

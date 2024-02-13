@@ -12,20 +12,8 @@ const Step1Screen = () => {
     const dispatch = useDispatch();
     const pdfViewed = useSelector(selectPdfViewed);
     const isDarkTheme = useSelector(selectIsDarkTheme);
-    let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
 
-    const handleNext = () => {
-        if (pdfViewed) {
-            dispatch(incrementStep());
-        } else {
-            alert('Пожалуйста, пролистайте документ до конца.');
-        }
-    };
-
-    const handlePDFViewed = () => {
-        dispatch(setPdfViewed());
-    };
 
     return (
             <View style={styles.containerPdf}>

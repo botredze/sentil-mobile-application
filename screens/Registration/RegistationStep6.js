@@ -39,9 +39,9 @@ const Step6Screen = () => {
                     >
                         <Picker.Item label="Выберите страну" value="0"/>
                         <Picker.Item label="Кыргызстан" value="1"/>
-                        <Picker.Item label="Кызыкстан" value="2"/>
+                        <Picker.Item label="Казакстан" value="2"/>
                         <Picker.Item label="Узбекистан" value="3"/>
-                        <Picker.Item label="Раша" value="4"/>
+                        <Picker.Item label="Россия" value="4"/>
                     </Picker>
 
                     <View style={styles.inputContainer}>

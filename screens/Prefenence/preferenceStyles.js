@@ -63,8 +63,8 @@ export const stylesLite = StyleSheet.create({
         alignItems: "center",
         gap: 10,
         padding: 15,
-        justifyContent: 'space-between'
-
+        justifyContent: 'space-between',
+        width: '98%'
     },
 
     themeTitle: {

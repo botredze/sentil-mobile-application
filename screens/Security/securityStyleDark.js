@@ -160,7 +160,7 @@ export const stylesDark = StyleSheet.create({
     updateButtonText: {
         alignItems: "center",
         fontSize: 20,
-        color: FONT_COLORS.Lite,
+        color: FONT_COLORS.Dark,
         fontWeight: 'bold',
         lineHeight: 55
     }

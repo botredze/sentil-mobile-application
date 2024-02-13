@@ -83,7 +83,7 @@ export default function PreferenceScreen() {
                     >
                         <Picker.Item label="Выберите язык" value="0"/>
                         <Picker.Item label="Кыргызский" value="1"/>
-                        <Picker.Item label="Русккий" value="2"/>
+                        <Picker.Item label="Русский" value="2"/>
                         <Picker.Item label="Английский" value="3"/>
                     </Picker>
                 </View>
@@ -91,7 +91,7 @@ export default function PreferenceScreen() {
                 <View style={styles.themeTitle}><Text style={styles.themeTitleText}>Уведомления на почту</Text></View>
                 <View style={styles.themeContainer}>
 
-                    <Text style={styles.settingsText}>Хочу получать уведомления на электронную почту</Text>
+                    <Text style={styles.settingsText}>Хочу получать уведомления   на электронную почту</Text>
 
                     <Switch
                         trackColor={{false: '#767577', true: '#81b0ff'}}

@@ -7,7 +7,12 @@ import {
     KeyboardAvoidingView, ScrollView, Keyboard, Platform
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {selectRegistrationStep, incrementStep, resetRegistration} from '../../redux/slieces/registrationSlice';
+import {
+    selectRegistrationStep,
+    incrementStep,
+    resetRegistration,
+    selectPdfViewed
+} from '../../redux/slieces/registrationSlice';
 import Step1Screen from "./RegistationStep1";
 import Step2Screen from "./RegistationStep2";
 import Step3Screen from "./RegistationStep3";
@@ -19,13 +24,14 @@ import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
 import {stylesLite} from "./styles/registrationStyles";
-import {useKeyboard} from '@react-native-community/hooks';
+import PDFViewer from "./PdfViewer";
 
 const RegistrationScreen = ({navigation}) => {
     const dispatch = useDispatch();
     const isDarkTheme = useSelector(selectIsDarkTheme);
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
+    const  pdfViewed = useSelector(selectPdfViewed)
 
     const currentStep = useSelector(selectRegistrationStep);
     const [showInput, setShowInput] = useState(false);
@@ -91,12 +97,9 @@ const RegistrationScreen = ({navigation}) => {
                 return (
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
-                            <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 1: Согласие</Text>
-                                <ScrollView style={styles.renderedContent}>
-                                    <Step1Screen/>
-                                </ScrollView>
-
+                            <Text style={styles.stepText}>Шаг 1: Согласие</Text>
+                            <View style={{flex: 1, width: '100%', height: '100%', marginTop: 10, alignSelf: 'center'}}>
+                                <PDFViewer/>
                             </View>
                         </View>
                     </View>
@@ -255,7 +258,7 @@ const RegistrationScreen = ({navigation}) => {
             <Text style={styles.mainTitle}>Регистрация</Text>
             <KeyboardAvoidingView>
                 {renderStepContent()}
-                {!keyboardShown && nextBtnVisible && (
+                {!keyboardShown && nextBtnVisible && pdfViewed && (
                     <View style={styles.btnGroup}>
                         <TouchableOpacity onPress={handleNextStep} style={styles.nextButton}>
                             <Text style={styles.nextBtnText}>Далее</Text>

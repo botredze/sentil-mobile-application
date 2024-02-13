@@ -42,7 +42,7 @@ export default function ChatScreen() {
     // }, []);
 
     return (
-        <View style={styles.container}>
+        <View style={styles.chatMessage}>
             <View style={styles.nav}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Ionicons name='arrow-back' size={30} color={iconColors}/>

@@ -3,7 +3,8 @@ import {BUTTONCOLORS, COLORS, FONT_COLORS} from "../../../constants/colors";
 
 export const stylesLite = StyleSheet.create({
     container: {
-        height: '97%',
+        height: '98%',
+        width: '100%'
         //backgroundColor: 'red'
     },
 
@@ -206,10 +207,11 @@ export const stylesLite = StyleSheet.create({
         borderRadius: 15,
         borderWidth: 1,
         borderColor: '#989797',
-        padding: 15,
+        padding: 10,
         display: "flex",
         flexDirection: 'row',
         gap: 10,
+        textAlign: "center"
     },
 
     nextBtnText: {

@@ -25,6 +25,7 @@ import AmountSelect from "./screens/Deposit/AmountSelect";
 import ConfirmTransaction from "./screens/ConfirmTransaction/ConfirmTransaction";
 import DepositScreen from "./screens/Deposit/DepositScreen";
 import {selectIsDarkTheme} from "./redux/slieces/themeSlice";
+import PDFViewer from "./screens/Registration/PdfViewer";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -103,6 +104,7 @@ const NavigationUses = () => {
                     <Stack.Screen name='AmountSelect' component={AmountSelect}/>
                     <Stack.Screen name='ConfirmTransaction' component={ConfirmTransaction}/>
                     <Stack.Screen name = 'DepositScreen' component={DepositScreen}/>
+                    <Stack.Screen name = 'PDFViewer' component={PDFViewer}></Stack.Screen>
                 </Stack.Navigator>
             </SafeAreaView>
         </NavigationContainer>

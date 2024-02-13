@@ -10,8 +10,8 @@ export const registrationSlice = createSlice({
         incrementStep: (state) => {
             state.step += 1;
         },
-        setPdfViewed: (state) => {
-            state.pdfViewed = true;
+        setPdfViewed: (state, action) => {
+            state.pdfViewed = action.payload;
         },
         resetRegistration: (state) => {
             state.step = 1;

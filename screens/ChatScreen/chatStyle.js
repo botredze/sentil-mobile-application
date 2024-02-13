@@ -4,10 +4,11 @@ import {CARD_CONTAINER_COLORS, COLORS, FONT_COLORS} from "../../constants/colors
 export const stylesLite = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.mainBackgroundLite,
+       // backgroundColor: COLORS.mainBackgroundLite,
         flexGrow: 1,
         justifyContent: 'flex-end',
-        padding: 5
+        padding: 5,
+        marginBottom: 70
     },
 
     messageContainer: {
@@ -32,11 +33,15 @@ export const stylesLite = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: COLORS.mainBackgroundLite,
+       // backgroundColor: COLORS.mainBackgroundLite,
+       //  backgroundColor: 'blue',
         borderTopWidth: 1,
         borderColor: COLORS.borderColorLite,
         paddingVertical: 5,
         paddingHorizontal: 10,
+        position:"absolute",
+        bottom:5,
+        left:0
     },
     input: {
         flex: 1,
@@ -45,6 +50,12 @@ export const stylesLite = StyleSheet.create({
         borderRadius: 20,
         paddingHorizontal: 15,
         paddingVertical: 10,
+    },
+
+    chatMessage:{
+         backgroundColor: COLORS.mainBackgroundLite,
+        height:"100%",
+        position:"relative",
     },
 
     nav: {

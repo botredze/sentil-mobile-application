@@ -207,10 +207,11 @@ export const stylesDark = StyleSheet.create({
         borderRadius: 15,
         borderWidth: 1,
         borderColor: '#989797',
-        padding: 15,
+        padding: 10,
         display: "flex",
         flexDirection: 'row',
         gap: 10,
+        textAlign: "center"
     },
 
     nextBtnText: {

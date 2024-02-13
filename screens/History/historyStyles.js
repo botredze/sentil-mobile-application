@@ -5,6 +5,7 @@ export const stylesLite = StyleSheet.create({
     container: {
         padding: 15,
         backgroundColor: COLORS.mainBackgroundLite,
+        height:"100%"
     },
 
     sortButtonGroup: {

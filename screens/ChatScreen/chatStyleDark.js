@@ -7,13 +7,21 @@ export const stylesDark = StyleSheet.create({
         backgroundColor: COLORS.mainBackgroundDark,
         flexGrow: 1,
         justifyContent: 'flex-end',
-        padding: 5
+        padding: 5,
+        marginBottom: 70
+    },
+
+    chatMessage:{
+        backgroundColor: COLORS.mainBackgroundLite,
+        height:"100%",
+        position:"relative",
     },
 
     messageContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         marginBottom: 10,
+        backgroundColor: 'green'
     },
     myMessage: {
         justifyContent: 'flex-end',
@@ -32,11 +40,15 @@ export const stylesDark = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: COLORS.mainBackgroundDark,
+        //backgroundColor: COLORS.mainBackgroundDark,
+        backgroundColor: 'purple',
         borderTopWidth: 1,
         borderColor: COLORS.borderColorDark,
         paddingVertical: 5,
         paddingHorizontal: 10,
+        position:"absolute",
+        bottom:5,
+        left:0
     },
     input: {
         flex: 1,
@@ -46,6 +58,7 @@ export const stylesDark = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 10,
     },
+
 
     nav: {
         display: "flex",
