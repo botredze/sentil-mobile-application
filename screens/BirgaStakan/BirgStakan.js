@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {FONT_COLORS, CHARTCOLORS, ICONCOlORS, chartColorsGlobal} from "../../constants/colors";
 import {stylesDark} from "./birgaStakanStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function BirgStakan() {
     const navigation = useNavigation();
@@ -15,6 +16,9 @@ export default function BirgStakan() {
     let styles = isDarkTheme ? stylesDark : stylesLite
     let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
     let chartColors = isDarkTheme ? CHARTCOLORS.dark : CHARTCOLORS.lite
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
     let chartLineColors = isDarkTheme ? chartColorsGlobal.dark : chartColorsGlobal.lite
     const data = {
@@ -40,17 +44,17 @@ export default function BirgStakan() {
 
 
             <View style={styles.title}>
-                <Text style={styles.titleText}>Фин.показатели</Text>
+                <Text style={styles.titleText}>{language.finViewTitle}</Text>
             </View>
 
             <View style={[styles.finView, shadowProp]}>
                 <View style={styles.tableRow}>
                     <View style={{width: '40%'}}>
-                        <Text style={styles.tableHeader}>Дата и время</Text>
+                        <Text style={styles.tableHeader}>{language.dateTimeTableTitle}</Text>
                     </View>
-                    <Text style={styles.tableHeader}>Кол-во</Text>
-                    <Text style={styles.tableHeader}>Цена</Text>
-                    <Text style={styles.tableHeader}>Объем</Text>
+                    <Text style={styles.tableHeader}>{language.countTableTitle}</Text>
+                    <Text style={styles.tableHeader}>{language.priceTableTitle}</Text>
+                    <Text style={styles.tableHeader}>{language.copasityTableTitle}</Text>
                 </View>
                 <View style={styles.tableRow}>
                     <View style={{width: '40%'}}>
@@ -114,12 +118,12 @@ export default function BirgStakan() {
             <View style={styles.buySellButtonGroup}>
                 <TouchableOpacity style={[styles.buyBtn, shadowProp]}>
                     <AntDesign name='arrowup' size={20} color='black'/>
-                    <Text style={styles.replenishBtnText}>Купить</Text>
+                    <Text style={styles.replenishBtnText}>{language.buyBtn}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.sellOffBtn, shadowProp]}>
                     <AntDesign name='arrowdown' size={20} color='black'/>
-                    <Text style={styles.takeOffBtnText}>Продать</Text>
+                    <Text style={styles.takeOffBtnText}>{language.sellBtn}</Text>
                 </TouchableOpacity>
             </View>
         </View>

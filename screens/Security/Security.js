@@ -17,6 +17,7 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./securityStyleDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 
 export default function Security() {
@@ -61,6 +62,9 @@ export default function Security() {
         }).start();
     };
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
     return (
         <View style={styles.container}>
@@ -77,13 +81,13 @@ export default function Security() {
             </View>
 
 
-            <View style={styles.title}><Text style={styles.profileText}> Смена пароля </Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.resetPasswordTitle}</Text></View>
 
             <TouchableOpacity style={[styles.settingTabs, shadowProp]} onPress={showPasswordModal}>
                 <Image source={require('../../assets/password.png')} style={styles.iconSet}/>
                 <View style={styles.textView}>
-                    <Text style={styles.nameText}>Пароль</Text>
-                    <Text style={styles.settingsText}>Сменить пароль аккаунта</Text>
+                    <Text style={styles.nameText}>{language.resetPasswordBtnTitle}</Text>
+                    <Text style={styles.settingsText}>{language.resetPasswordBtnInfo}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -119,39 +123,39 @@ export default function Security() {
                             {/*>*/}
                             <View style={styles.inner}>
                                 <View style={styles.changePassword}>
-                                    <Text style={styles.changePasswordMainTitleText}>Смена пароля</Text>
+                                    <Text style={styles.changePasswordMainTitleText}>{language.resetPasswordTitle}</Text>
 
                                     <View style={styles.inputGroup}>
-                                        <Text style={styles.changePasswordInfoText}>Старый пароль</Text>
+                                        <Text style={styles.changePasswordInfoText}>{language.resetPasswordOldPassInfo}</Text>
 
                                         <TextInput
                                             placeholderTextColor={iconColors}
                                             style={[styles.input, {color: iconColors}]}
-                                            keyboardType={'default'} placeholder={'Веедите старый пароль'}
+                                            keyboardType={'default'} placeholder={language.resetPasswordPlaceHolder}
                                             secureTextEntry={true}
                                             password={true}
                                         />
                                     </View>
 
                                     <View style={styles.inputGroup}>
-                                        <Text style={styles.changePasswordInfoText}>Новый пароль</Text>
+                                        <Text style={styles.changePasswordInfoText}>{language.resetPasswordNewPassInfo}</Text>
 
                                         <TextInput
                                             placeholderTextColor={iconColors}
                                             style={[styles.input, {color: iconColors}]}
-                                            keyboardType={'default'} placeholder={'Веедите пароль'}
+                                            keyboardType={'default'} placeholder={language.resetPasswordPlaceHolder}
                                             secureTextEntry={true}
                                             password={true}
                                         />
                                     </View>
 
                                     <View style={styles.inputGroup}>
-                                        <Text style={styles.changePasswordInfoText}>Повторите пароль</Text>
+                                        <Text style={styles.changePasswordInfoText}>{language.resetPasswordrepeatnfo}</Text>
 
                                         <TextInput
                                             placeholderTextColor={iconColors}
                                             style={[styles.input, {color: iconColors}]}
-                                            keyboardType={'default'} placeholder={'Веедите пароль '}
+                                            keyboardType={'default'} placeholder={language.resetPasswordPlaceHolder}
                                             secureTextEntry={true}
                                             password={true}
                                         />
@@ -162,7 +166,7 @@ export default function Security() {
                                             style={styles.updateButton}
                                             onPress={goToSettingsPage}
                                         >
-                                            <Text style={styles.updateButtonText}>Обновить данные</Text>
+                                            <Text style={styles.updateButtonText}>{language.updateBtn}</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>

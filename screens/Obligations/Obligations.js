@@ -6,6 +6,7 @@ import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./obligationsStylesDark";
 import {stylesLite} from "./obligationsStyles";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function Obligations() {
 
@@ -14,9 +15,12 @@ export default function Obligations() {
     let styles = isDarkTheme ? stylesDark : stylesLite
     let shadowProp = Platform.OS === 'ios' ? styles.shadowProp : styles.elevation
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
-    
+
     const navigation = useNavigation();
-    
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+
+    const language = languages[selectedLanguage]
     return (
         <View style={styles.container}>
             <View style={styles.nav}>
@@ -31,7 +35,7 @@ export default function Obligations() {
 
             </View>
 
-            <View style={styles.title}><Text style={styles.profileText}>Мой портфель </Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.myDeplomat}</Text></View>
 
             {/*<View style={styles.sortButtonGroup}>*/}
 
@@ -62,7 +66,7 @@ export default function Obligations() {
                             <View style={styles.summViewInfo}>
                                 <View style={styles.infoContainer}>
                                     <Text style={styles.summInfoText}>122</Text>
-                                    <Text style={styles.infoText}>штук по</Text>
+                                    <Text style={styles.infoText}>{language.countByTitle}</Text>
                                     <Text style={styles.summInfoText}>200</Text>
                                     <Text style={styles.infoText}>сом</Text>
                                 </View>
@@ -87,7 +91,7 @@ export default function Obligations() {
                             <View style={styles.summViewInfo}>
                                 <View style={styles.infoContainer}>
                                     <Text style={styles.summInfoText}>122</Text>
-                                    <Text style={styles.infoText}>штук по</Text>
+                                    <Text style={styles.infoText}>{language.countByTitle}</Text>
                                     <Text style={styles.summInfoText}>200</Text>
                                     <Text style={styles.infoText}>сом</Text>
                                 </View>
@@ -111,7 +115,7 @@ export default function Obligations() {
                             <View style={styles.summViewInfo}>
                                 <View style={styles.infoContainer}>
                                     <Text style={styles.summInfoText}>122</Text>
-                                    <Text style={styles.infoText}>штук по</Text>
+                                    <Text style={styles.infoText}>{language.countByTitle}</Text>
                                     <Text style={styles.summInfoText}>200</Text>
                                     <Text style={styles.infoText}>сом</Text>
                                 </View>

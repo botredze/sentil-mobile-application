@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {stylesDark} from "./homePageStyleDark";
 import {ICONCOlORS} from "../../constants/colors";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function HomeScreen() {
     const navigation = useNavigation();
@@ -24,6 +25,9 @@ export default function HomeScreen() {
         navigation.navigate('BirgStakan');
     };
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
     const depositMoney = () => {
         navigation.navigate('DepositScreen')
@@ -36,7 +40,7 @@ export default function HomeScreen() {
                 <Image source={require('../../assets/backGroundImage.png')} style={styles.cardBackGroudImage}/>
                 <View style={styles.balanceContainerInner}>
                     <View style={styles.pageTitleContainer}>
-                        <Text style={styles.pageTitleText}>Брокерский счет</Text>
+                        <Text style={styles.pageTitleText}>{language.brokerAccount}</Text>
                     </View>
 
                     <View style={{
@@ -52,14 +56,13 @@ export default function HomeScreen() {
 
                     <View style={styles.buttonGroupContainer}>
                         <TouchableOpacity style={styles.replenishBtn}
-                        onPress={depositMoney}
                         >
                             {/*<FontAwesome name='dollar' size={20} color={iconColors}/>*/}
                             <Image
                                 source={require('../../assets/money-recive.png')}
                                 style={styles.moneyIcon}
                             />
-                            <Text style={styles.replenishBtnText}>Пополнить</Text>
+                            <Text style={styles.replenishBtnText}>{language.replenish}</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.takeOffBtn}>
@@ -68,7 +71,7 @@ export default function HomeScreen() {
                                 style={styles.moneyIcon}
                             />
                             {/*<FontAwesome name='money' size={20} color={iconColors}/>*/}
-                            <Text style={styles.takeOffBtnText}>Вывести</Text>
+                            <Text style={styles.takeOffBtnText}>{language.withdraw}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -81,14 +84,13 @@ export default function HomeScreen() {
                     style={styles.investBtn}
                     onPress={goToInvestList}
                 >
-                    <Text style={styles.investBtnText}> Инвестировать </Text>
+                    <Text style={styles.investBtnText}>{language.investBtn}</Text>
                 </TouchableOpacity>
             </View>
 
 
             <View style={[styles.populer, shadowProp]}>
-                <View style={styles.populerTitle}><Text style={styles.populerTitleText}>Самые
-                    популярные</Text></View>
+                <View style={styles.populerTitle}><Text style={styles.populerTitleText}>{language.popelerTitle}</Text></View>
                 <View style={styles.populerBox}>
 
                     <TouchableOpacity style={[styles.populerItem, shadowProp]}

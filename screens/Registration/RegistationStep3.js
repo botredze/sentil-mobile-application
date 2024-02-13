@@ -8,6 +8,7 @@ import { stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const Step3Screen = () => {
     const dispatch = useDispatch();
@@ -59,6 +60,10 @@ const Step3Screen = () => {
         );
     };
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
+
     const handleEndDateConfirm = (date) => {
         setEndDate(date);
         setStartDatePickerVisible(false);
@@ -70,53 +75,53 @@ const Step3Screen = () => {
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>ID паспорта</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.idPassportTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <View>
                         <TextInput
-                            placeholder={'Введите ID'}
+                            placeholder={language.idPassportPlaceHolder}
                            placeholderTextColor = {iconColors}
                         style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}
                         />
-                        <Text style={styles.podskaText}>Пример: AN1234567,ID1234567</Text>
+                        <Text style={styles.podskaText}>{language.exampleIdPassport}</Text>
                     </View>
                 </View>
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>ИНН</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.innTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <View>
                         <TextInput
-                            placeholder={'Введите ИНН'}
+                            placeholder={language.innPlaceHolder}
                            placeholderTextColor = {iconColors}
                         style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}
                         />
-                        <Text style={styles.podskaText}>Персональный номер, состоящий из 14 цифр</Text>
+                        <Text style={styles.podskaText}>{language.exampleInn}</Text>
                     </View>
                 </View>
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Орган выдавший паспорт</Text><Text
+                        <Text style={styles.titleText}>{language.organTitle}</Text><Text
                         style={styles.requredText}>*</Text>
                     </View>
                     <View>
                         <TextInput
-                            placeholder={'Введите данные органа'}
+                            placeholder={language.organPlaceHolder}
                            placeholderTextColor = {iconColors}
                         style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}
                         />
-                        <Text style={styles.podskaText}>Пример: MKK 123456</Text>
+                        <Text style={styles.podskaText}>{language.exampleOrgan}</Text>
                     </View>
                 </View>
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Дата выдачи</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.dateIssuseTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <View>
                         {renderDateInputs()}

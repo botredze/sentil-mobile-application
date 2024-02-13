@@ -1,16 +1,15 @@
 import {Image, KeyboardAvoidingView, Switch, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {liteStyles} from './loginStyles'
 import {useNavigation} from "@react-navigation/native";
-import React, {useState} from "react";
-
-import {globalContainerStyles} from '../../constants/globalContainerStyles'
-import {selectIsDarkTheme, toggleTheme} from "../../redux/slieces/themeSlice";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
+import {selectIsDarkTheme, } from "../../redux/slieces/themeSlice";
+import { useSelector} from "react-redux";
 import {darkStyles} from "./loginStylesDark";
 import {ICONCOlORS} from "../../constants/colors";
+import {selectLanguage, selectLanguages, } from "../../redux/slieces/languageSlice";
 
 export default function LoginScreen() {
-    const navigation = useNavigation();
+
     const isDarkTheme = useSelector(selectIsDarkTheme);
 
     let styles = isDarkTheme ? darkStyles : liteStyles
@@ -24,15 +23,10 @@ export default function LoginScreen() {
         navigation.replace('HomeTabs');
     };
 
-    const dispatch = useDispatch();
-
-    const handleToggleTheme = () => {
-        dispatch(toggleTheme());
-    };
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-    const [isEnabled, setIsEnabled] = useState(false);
-
+    const navigation = useNavigation();
+    const selectedLanguage = useSelector(selectLanguage);
+    const languages = useSelector(selectLanguages);
+    const language = languages[selectedLanguage]
 
     return (
         <View style={styles.loginSreenParent}>
@@ -55,9 +49,9 @@ export default function LoginScreen() {
 
                     <View style={styles.inputGroupContainer}>
                         <View style={styles.inputGroup}>
-                            <Text style={styles.titleText}>Логин</Text>
+                            <Text style={styles.titleText}>{language.loginInputTitle}</Text>
                             <TextInput
-                                placeholder={'Введите логин'}
+                                placeholder={language.loginInputPlaceholder}
                                 placeholderTextColor={iconColors}
                                 style={[styles.input, {color: iconColors}]}
                                 keyboardType={'email-address'}
@@ -65,9 +59,9 @@ export default function LoginScreen() {
                         </View>
 
                         <View style={styles.inputGroup}>
-                            <Text style={styles.titleText}>Пароль</Text>
+                            <Text style={styles.titleText}>{language.passwordInputTite}</Text>
                             <TextInput
-                                placeholder={'Введите пароль'}
+                                placeholder={language.passwordInputPlaceholder}
                                 secureTextEntry={true}
                                 password={true}
                                 placeholderTextColor={iconColors}
@@ -83,26 +77,26 @@ export default function LoginScreen() {
                             style={styles.loginBtn}
                             onPress={toLogin}
                         >
-                            <Text style={styles.loginText}>Войти</Text>
+                            <Text style={styles.loginText}>{language.loginBtn}</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={styles.dopButtonGroup}>
                         <TouchableOpacity style={styles.forgotBtn}>
-                            <Text style={styles.forgotText}>Забыли пароль ?</Text>
+                            <Text style={styles.forgotText}>{language.forgotPassword}</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             style={styles.forgotBtn}
                             onPress={handleRegistration}
                         >
-                            <Text style={styles.forgotText}>Регистрация</Text>
+                            <Text style={styles.forgotText}>{language.registerBtn}</Text>
                         </TouchableOpacity>
                     </View>
 
                 </View>
                 <View style={styles.footerLogo}>
-                    <Text style={styles.footerText}>Цифровые решения</Text>
+                    <Text style={styles.footerText}>{language.bssoftTitle}</Text>
                     <Text style={styles.footerCompanyText}>Business Soft</Text>
                 </View>
             </View>

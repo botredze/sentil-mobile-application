@@ -17,6 +17,7 @@ import {stylesDark} from "./chatStyleDark";
 import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function ChatScreen() {
     const [message, setMessage] = useState('');
@@ -41,6 +42,9 @@ export default function ChatScreen() {
     //     return () => clearTimeout(timeout);
     // }, []);
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     return (
         <View style={styles.chatMessage}>
             <View style={styles.nav}>
@@ -56,35 +60,38 @@ export default function ChatScreen() {
             </View>
 
 
-            <View style={styles.title}><Text style={styles.profileText}>Чат поддержки</Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.chatTitleText}</Text></View>
 
-            <KeyboardAvoidingView style={{flex: 1}} behavior="padding"
-                                  keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0}>
-                <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-                    {messages.map((msg, index) => (
-                        <View key={index} style={[styles.messageContainer, msg.fromMe && styles.myMessage]}>
-                            <View style={styles.messageBubble}>
-                                <Text style={styles.msgText}>{msg.text}</Text>
+            <View style={styles.chatView}>
+                <KeyboardAvoidingView style={{flex: 1}} behavior="padding"
+                                      keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0}>
+                    <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+                        {messages.map((msg, index) => (
+                            <View key={index} style={[styles.messageContainer, msg.fromMe && styles.myMessage]}>
+                                <View style={styles.messageBubble}>
+                                    <Text style={styles.msgText}>{msg.text}</Text>
+                                </View>
                             </View>
-                        </View>
-                    ))}
-                </ScrollView>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        value={message}
-                        onChangeText={text => setMessage(text)}
-                        placeholder="Введите сообщение..."
-                        placeholderTextColor = {iconColors}
-                        style={[styles.input, {color: iconColors}]}
+                        ))}
+                    </ScrollView>
+                </KeyboardAvoidingView>
+            </View>
 
-                    />
-                    {/*<Button title="Отправить" onPress={sendMessage}/>*/}
+            <View style={styles.inputContainer}>
+                <TextInput
+                    value={message}
+                    onChangeText={text => setMessage(text)}
+                    placeholder={language.chatPlaceHolder}
+                    placeholderTextColor={iconColors}
+                    style={[styles.input, {color: iconColors}]}
 
-                    <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-                        <Ionicons name="send" size={24} color={iconColors} />
-                    </TouchableOpacity>
-                </View>
-            </KeyboardAvoidingView>
+                />
+                {/*<Button title="Отправить" onPress={sendMessage}/>*/}
+
+                <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+                    <Ionicons name="send" size={24} color={iconColors}/>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };

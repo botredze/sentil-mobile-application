@@ -10,6 +10,7 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {stylesDark} from "./historyStylesDark";
 import {ICONCOlORS} from "../../constants/colors";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function HistoryScreen() {
     const navigation = useNavigation();
@@ -62,7 +63,7 @@ export default function HistoryScreen() {
         return (
             <View style={styles.dateInputsContainer}>
                 <View style={styles.inputContainer}>
-                    <Text style={styles.labelText}>От:</Text>
+                    <Text style={styles.labelText}>{language.dateStartTitle}</Text>
                     <TouchableOpacity
                         style={styles.dateInput}
                         onPress={() => setStartDatePickerVisible(true)}
@@ -71,7 +72,7 @@ export default function HistoryScreen() {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={styles.labelText}>До:</Text>
+                    <Text style={styles.labelText}>{language.dateEndTitle}</Text>
                     <TouchableOpacity
                         style={styles.dateInput}
                         onPress={() => setEndDatePickerVisible(true)}
@@ -82,6 +83,11 @@ export default function HistoryScreen() {
             </View>
         );
     };
+
+
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
     return (
         <View style={styles.container}>
@@ -97,7 +103,7 @@ export default function HistoryScreen() {
 
             </View>
 
-            <View style={styles.title}><Text style={styles.profileText}>История</Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.historyTitle}</Text></View>
 
             <View style={{alignSelf: 'center', display: 'flex', width: '95%'}}>
                 {renderDateInputs()}
@@ -120,13 +126,13 @@ export default function HistoryScreen() {
                     <View style={styles.themeView}>
                         <View style= {styles.titleView}>
                         <AntDesign name="arrowup" size={20} color="green"/>
-                        <Text style={styles.historyTitleText}>Покупка</Text>
+                        <Text style={styles.historyTitleText}>{language.buyTitle}</Text>
                         </View>
                         <Text style={styles.dateText}>{formatDateView(startDate)}</Text>
                     </View>
                     <View style={styles.moreInfoTitleView}>
-                        <View style={{width: '65%'}}><Text style={styles.infoText}>Покупка "ОАО КБ Кыргызстан" на сумму 10000 сом</Text></View>
-                        <View style={styles.operationStatus}><Text style={styles.statusText}>Успешно</Text></View>
+                        <View style={{width: '65%'}}><Text style={styles.infoText}>{language.buyTitle} "ОАО КБ Кыргызстан" {language.summText} 10000 сом</Text></View>
+                        <View style={styles.operationStatus}><Text style={styles.statusText}>{language.operationSuccess}</Text></View>
                     </View>
                 </View>
 
@@ -136,16 +142,16 @@ export default function HistoryScreen() {
                     <View style={styles.themeView}>
                         <View style= {styles.titleView}>
                             <AntDesign name="arrowdown" size={20} color="red"/>
-                            <Text style={styles.historyTitleText}>Продажа</Text>
+                            <Text style={styles.historyTitleText}>{language.sellTitle}</Text>
                         </View>
                         <Text style={styles.dateText}>{formatDateView(startDate)}</Text>
 
                     </View>
 
                     <View style={styles.moreInfoTitleView}>
-                        <View style={{width: '65%'}}><Text style={styles.infoText}>Продажа "ОАО Яндекс" на сумму 2400 сом</Text></View>
+                        <View style={{width: '65%'}}><Text style={styles.infoText}>{language.sellTitle} "ОАО Яндекс" {language.summText} 2400 сом</Text></View>
                         <View style={styles.operationStatusReject}><Text
-                            style={styles.statusText}>Отказано</Text></View>
+                            style={styles.statusText}>{language.operationReject}</Text></View>
                     </View>
                 </View>
                 <View style={styles.line}></View>

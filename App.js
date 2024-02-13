@@ -26,6 +26,7 @@ import ConfirmTransaction from "./screens/ConfirmTransaction/ConfirmTransaction"
 import DepositScreen from "./screens/Deposit/DepositScreen";
 import {selectIsDarkTheme} from "./redux/slieces/themeSlice";
 import PDFViewer from "./screens/Registration/PdfViewer";
+import {selectLanguage, selectLanguages} from "./redux/slieces/languageSlice";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -33,6 +34,9 @@ const Stack = createStackNavigator();
 
 const HomeTabs = () => {
     const isDarkTheme = useSelector(selectIsDarkTheme);
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     return (
         <Tab.Navigator
             screenOptions={({route}) => ({
@@ -40,15 +44,15 @@ const HomeTabs = () => {
                 tabBarIcon: ({color, size}) => {
                     let iconName;
 
-                    if (route.name === 'Мой портфель') {
+                    if (route.name === language.myPortfel) {
                         iconName = 'ios-list';
-                    } else if (route.name === 'История') {
+                    } else if (route.name === language.history) {
                         iconName = 'ios-barcode';
-                    } else if (route.name === 'Депонировать') {
+                    } else if (route.name === language.deponirovat) {
                         iconName = 'ios-search';
-                    } else if (route.name === 'Чат') {
-                        iconName = 'ios-chatbubbles';  // Corrected icon name
-                    } else if (route.name === 'Информация') {
+                    } else if (route.name === language.chat) {
+                        iconName = 'ios-chatbubbles';
+                    } else if (route.name === language.info) {
                         iconName = 'ios-information-circle';
                     }
                     else if (route.name === 'Главная') {
@@ -66,11 +70,11 @@ const HomeTabs = () => {
             }}
         >
             <Tab.Screen name="Главная" component={HomeScreen} options={{ tabBarButton: () => null }}/>
-            <Tab.Screen name="Мой портфель" component={Obligations}/>
-            <Tab.Screen name="История" component={HistoryScreen}/>
-            <Tab.Screen name="Депонировать" component={DeponirScreen}/>
-            <Tab.Screen name="Чат" component={ChatScreen}/>
-            <Tab.Screen name="Информация" component={InfoScreen}/>
+            <Tab.Screen name={language.myPortfel} component={Obligations}/>
+            <Tab.Screen name={language.history} component={HistoryScreen}/>
+            <Tab.Screen name={language.deponirovat} component={DeponirScreen}/>
+            <Tab.Screen name={language.chat} component={ChatScreen}/>
+            <Tab.Screen name={language.info} component={InfoScreen}/>
         </Tab.Navigator>
     );
 };

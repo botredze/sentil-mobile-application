@@ -3,18 +3,20 @@ import {CARD_CONTAINER_COLORS, COLORS, FONT_COLORS} from "../../constants/colors
 
 export const stylesLite = StyleSheet.create({
     container: {
-        flex: 1,
-       // backgroundColor: COLORS.mainBackgroundLite,
+       // flex: 1,
+        backgroundColor: COLORS.mainBackgroundLite,
         flexGrow: 1,
         justifyContent: 'flex-end',
         padding: 5,
-        marginBottom: 70
+        marginBottom: 70,
+      //  backgroundColor: 'red'
     },
 
     messageContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         marginBottom: 10,
+      //  backgroundColor: 'green'
     },
     myMessage: {
         justifyContent: 'flex-end',
@@ -33,8 +35,8 @@ export const stylesLite = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-       // backgroundColor: COLORS.mainBackgroundLite,
-       //  backgroundColor: 'blue',
+        backgroundColor: COLORS.mainBackgroundLite,
+        //backgroundColor: 'blue',
         borderTopWidth: 1,
         borderColor: COLORS.borderColorLite,
         paddingVertical: 5,
@@ -43,6 +45,15 @@ export const stylesLite = StyleSheet.create({
         bottom:5,
         left:0
     },
+
+    chatView: {
+        //backgroundColor: 'yeloow',
+        display: "flex",
+        flex: 1,
+        padding: 0,
+        flexDirection: 'column'
+    },
+
     input: {
         flex: 1,
         marginRight: 10,
@@ -56,6 +67,7 @@ export const stylesLite = StyleSheet.create({
          backgroundColor: COLORS.mainBackgroundLite,
         height:"100%",
         position:"relative",
+      //  backgroundColor: 'blue'
     },
 
     nav: {

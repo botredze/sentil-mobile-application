@@ -7,6 +7,7 @@ import {stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const Step6Screen = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,9 @@ const Step6Screen = () => {
             alert('Пожалуйста, заполните все поля.');
         }
     };
-
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     const handleValueChange = (itemValue, itemIndex) => setSelectedValue(itemValue)
 
     return (
@@ -37,7 +40,7 @@ const Step6Screen = () => {
                         mode={'dropdown'}
                         dropdownIconColor={iconColors}
                     >
-                        <Picker.Item label="Выберите страну" value="0"/>
+                        <Picker.Item label={language.selectCountryPlaceHolder} value="0"/>
                         <Picker.Item label="Кыргызстан" value="1"/>
                         <Picker.Item label="Казакстан" value="2"/>
                         <Picker.Item label="Узбекистан" value="3"/>
@@ -46,11 +49,11 @@ const Step6Screen = () => {
 
                     <View style={styles.inputContainer}>
                         <View style={styles.inputTextContainer}>
-                            <Text style={styles.titleText}>Укажите ваш адрес</Text><Text
+                            <Text style={styles.titleText}>{language.addressTitle}</Text><Text
                             style={styles.requredText}>*</Text>
                         </View>
                         <TextInput
-                            placeholder={'Введите адрес'}
+                            placeholder={language.addressPlaceHolder}
                             placeholderTextColor={iconColors}
                             style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}

@@ -7,6 +7,7 @@ import {stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const Step7Screen = () => {
     const navigation = useNavigation();
@@ -21,6 +22,10 @@ const Step7Screen = () => {
         setShowInput(true); // Показать ввод текста после нажатия кнопки "Отправить"
     };
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
+
     function signDocument() {
         navigation.navigate('login');
         dispatch(resetRegistration());
@@ -30,10 +35,8 @@ const Step7Screen = () => {
         <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
                 <View>
                     <View style={styles.inputContainerFinalText}>
-                        <Text style={styles.titleText}>Для завершения регистрации, вам необходимо подписать
-                            вышеуказанный документ! Для подписания нажмите кнопку "отправить" (ниже)</Text>
-                        <Text style={styles.titleText}>На ваш номер телефона будет выслано смс-сообщение, введите его в
-                            текстовое поле которое появится ниже, для подтверждения вашей подписи</Text>
+                        <Text style={styles.titleText}>{language.finalRegTitle}</Text>
+                        <Text style={styles.titleText}>{language.finalRegTitle2}</Text>
                     </View>
             </View>
         </KeyboardAvoidingView>

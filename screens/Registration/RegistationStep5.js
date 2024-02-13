@@ -9,6 +9,7 @@ import { stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const Step5Screen = () => {
     const isDarkTheme = useSelector(selectIsDarkTheme);
@@ -48,6 +49,10 @@ const Step5Screen = () => {
             console.error('Ошибка при сохранении ссылки на фото паспорта (задняя сторона) в AsyncStorage:', error);
         }
     };
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
+
 
     const handleSelfieWithPassportUpload = async () => {
         try {
@@ -65,13 +70,13 @@ const Step5Screen = () => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.uploadBtnGroup}>
-                <Text style={styles.buttonText}>Прикрепите фотографию лицевой стороны паспорта</Text>
-                <Text style={styles.buttonText}>(для замены фотографии нажмите "прикрепить фото" еще раз)</Text>
+                <Text style={styles.buttonText}>{language.frontPasportTitle}</Text>
+                <Text style={styles.buttonText}>{language.forReplaceInfoTitle}</Text>
                 <TouchableOpacity style={styles.uploadButton} onPress={handlePassportFrontUpload}>
                     <Ionicons name='cloud-upload-outline' size={25} color={iconColors}/>
                     <View style={{width: '80%'}}>
 
-                        <Text style={styles.buttonText}>Прикрепить фото</Text>
+                        <Text style={styles.buttonText}>{language.sendPhotoPlaceHolder}</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={styles.imageContent}>
@@ -81,12 +86,12 @@ const Step5Screen = () => {
                 </View>
 
 
-                <Text style={styles.buttonText}>Прикрепите фотографию оборотной стороны паспорта</Text>
-                <Text style={styles.buttonText}>(для замены фотографии нажмите "прикрепить фото" еще раз)</Text>
+                <Text style={styles.buttonText}>{language.backPassportTitle}</Text>
+                <Text style={styles.buttonText}>{language.forReplaceInfoTitle}</Text>
                 <TouchableOpacity style={styles.uploadButton} onPress={handlePassportBackUpload}>
                     <Ionicons name='cloud-upload-outline' size={25} color={iconColors}/>
                     <View style={{width: '80%'}}>
-                        <Text style={styles.buttonText}>Прикрепить фото</Text>
+                        <Text style={styles.buttonText}>{language.sendPhotoPlaceHolder}</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={styles.imageContent}>
@@ -95,13 +100,13 @@ const Step5Screen = () => {
                     )}
                 </View>
 
-                <Text style={styles.buttonText}>Прикрепите селфи с лицевой частью паспорта</Text>
-                <Text style={styles.buttonText}>(для замены фотографии нажмите "прикрепить фото" еще раз)</Text>
+                <Text style={styles.buttonText}>{language.selfiPassportTitle}</Text>
+                <Text style={styles.buttonText}>{language.forReplaceInfoTitle}</Text>
 
                 <TouchableOpacity style={styles.uploadButton} onPress={handleSelfieWithPassportUpload}>
                     <Ionicons name='cloud-upload-outline' size={25} color={iconColors}/>
                     <View style={{width: '80%'}}>
-                        <Text style={styles.buttonText}>Прикрепить фото</Text>
+                        <Text style={styles.buttonText}>{language.sendPhotoPlaceHolder}</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={styles.imageContent}>

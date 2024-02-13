@@ -7,6 +7,7 @@ import { stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const Step2Screen = () => {
     const dispatch = useDispatch();
@@ -14,14 +15,9 @@ const Step2Screen = () => {
     const isDarkTheme = useSelector(selectIsDarkTheme);
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
-
-    const handleNext = () => {
-        if (pdfViewed) {
-            dispatch(incrementStep());
-        } else {
-            alert('Пожалуйста, заполните все поля.');
-        }
-    };
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
     return (
         <KeyboardAvoidingView behavior="padding">
@@ -29,10 +25,10 @@ const Step2Screen = () => {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Имя</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.firstNameTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <TextInput
-                        placeholder={'Введите имя'}
+                        placeholder={language.firstNamePlaceHolder}
                         placeholderTextColor={iconColors}
                         style={[styles.input, {color: iconColors}]}
                         keyboardType={'default'}
@@ -42,10 +38,10 @@ const Step2Screen = () => {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Фамилия</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.lastNameTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <TextInput
-                        placeholder={'Введите фамилию'}
+                        placeholder={language.lastNamePlaceholder}
                         placeholderTextColor={iconColors}
                         style={[styles.input, {color: iconColors}]}
                         keyboardType={'default'}
@@ -54,10 +50,10 @@ const Step2Screen = () => {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Отчество</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.regMiddleNameTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <TextInput
-                        placeholder={'Введите отчество'}
+                        placeholder={language.regMiddleNamePlaceholder}
                         placeholderTextColor={iconColors}
                         style={[styles.input, {color: iconColors}]}
                         keyboardType={'default'}
@@ -66,14 +62,14 @@ const Step2Screen = () => {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Введите почтовый адрес</Text><Text
+                        <Text style={styles.titleText}>{language.regEmailPlaceHolder}</Text><Text
                         style={styles.requredText}>*</Text>
                     </View>
 
-                    <Text style={styles.titleText1}>(Будет использоваться в качестве логина)</Text>
+                    <Text style={styles.titleText1}>{language.regEmailTitle}</Text>
 
                     <TextInput
-                        placeholder={'Введите email'}
+                        placeholder={language.emailPlaceHolder}
                         placeholderTextColor={iconColors}
                         style={[styles.input, {color: iconColors}]}
                         keyboardType={'email-address'}
@@ -83,7 +79,7 @@ const Step2Screen = () => {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Номер телефона </Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.regGhoneNumberTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <MaskedTextInput
                         defaultValue="+996 "

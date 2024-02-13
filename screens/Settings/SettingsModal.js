@@ -7,6 +7,7 @@ import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./settingsStyleDark";
 import {stylesLite} from "./settingsStyles";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 
 export default function Settings() {
@@ -34,6 +35,10 @@ export default function Settings() {
     const goToPreference = () => {
         navigation.navigate('PreferenceScreen')
     };
+
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     return (
         <View style={styles.container}>
             <View style={styles.nav}>
@@ -45,20 +50,20 @@ export default function Settings() {
                     style={{display: "flex", flexDirection: 'row', gap:10}}
                     onPress={logoutHandler}
                 >
-                    <Text style={styles.logoutText}>Выйти</Text>
+                    <Text style={styles.logoutText}>{language.logoutBtn}</Text>
                    {/* <Ionicons name='power' size={30} color='red'/>*/}
                 </TouchableOpacity>
             </View>
 
-            
+
 
             <View style={[styles.profileView]}>
                 <View>
                 <Image source={require('../../assets/Profile.png')} style={styles.profilePhoto}/>
                 </View>
                 <View style={styles.textView}>
-                    <Text style={styles.nameTextMain}>Здравствуйте Баатыр</Text>
-                    <Text style={styles.settingsTextMain}>Управление профилем</Text>
+                    <Text style={styles.nameTextMain}>{language.hellowTitle} Баатыр</Text>
+                    <Text style={styles.settingsTextMain}>{language.settingInfoTitle}</Text>
                 </View>
             </View>
 
@@ -68,8 +73,8 @@ export default function Settings() {
             >
                 <Image source={require('../../assets/user.png')} style={styles.iconSet}/>
                 <View style={styles.textView}>
-                    <Text style={styles.nameText}>Мой профиль</Text>
-                    <Text style={styles.settingsText}>Ваш профиль и персональные данные</Text>
+                    <Text style={styles.nameText}>{language.myProfileBtnTitle}</Text>
+                    <Text style={styles.settingsText}>{language.myProfileBtnInfo}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -80,8 +85,8 @@ export default function Settings() {
             >
                 <Image source={require('../../assets/secyrity.png')} style={styles.iconSet}/>
                 <View style={styles.textView}>
-                    <Text style={styles.nameText}>Безопасность</Text>
-                    <Text style={styles.settingsText}>Управление доступом к профилю</Text>
+                    <Text style={styles.nameText}>{language.secureBtnTitle}</Text>
+                    <Text style={styles.settingsText}>{language.secureIBtnInfo}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -91,8 +96,8 @@ export default function Settings() {
             >
                 <Image source={require('../../assets/setting.png')} style={styles.iconSet}/>
                 <View style={styles.textView}>
-                    <Text style={styles.nameText}>Предпочтения</Text>
-                    <Text style={styles.settingsText}>Настройки и конфигурация</Text>
+                    <Text style={styles.nameText}>{language.priferenceBtnTitle}</Text>
+                    <Text style={styles.settingsText}>{language.priferenceBtnInfo}</Text>
                 </View>
             </TouchableOpacity>
         </View>

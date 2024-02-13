@@ -6,6 +6,7 @@ import {stylesLite} from "./styles/registrationStyles";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const Step4Screen = () => {
     const dispatch = useDispatch();
@@ -22,17 +23,21 @@ const Step4Screen = () => {
         }
     };
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
+
     return (
         <KeyboardAvoidingView behavior="padding">
             <View style={styles.container}>
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Придумайте пароль</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.createPasswordTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <View>
                         <TextInput
-                            placeholder={'Введите пароль'}
+                            placeholder={language.createPasswordPlaceHolder}
                             placeholderTextColor = {iconColors}
                         style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}
@@ -45,11 +50,11 @@ const Step4Screen = () => {
 
                 <View style={styles.inputContainer}>
                     <View style={styles.inputTextContainer}>
-                        <Text style={styles.titleText}>Повторите пароль</Text><Text style={styles.requredText}>*</Text>
+                        <Text style={styles.titleText}>{language.repeatPasswordTitle}</Text><Text style={styles.requredText}>*</Text>
                     </View>
                     <View>
                         <TextInput
-                            placeholder={'Повторите пароль'}
+                            placeholder={language.repeatPasswordPlaceHolder}
                             placeholderTextColor = {iconColors}
                         style={[styles.input, {color: iconColors}]}
                             keyboardType={'default'}

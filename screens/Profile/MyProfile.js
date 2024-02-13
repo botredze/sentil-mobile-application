@@ -9,6 +9,7 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./myProfileStyleDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 
 export default function Profile() {
@@ -17,7 +18,9 @@ export default function Profile() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
     let styles = isDarkTheme ? stylesDark : stylesLite
-
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     const goToSettingsPage = () => {
         navigation.navigate('Settings')
     };
@@ -37,38 +40,38 @@ export default function Profile() {
                     </View>
 
 
-                    <View style={styles.title}><Text style={styles.profileText}>Мой профиль</Text></View>
+                    <View style={styles.title}><Text style={styles.profileText}>{language.myProfileUpdateTitle}</Text></View>
 
                     <View style={styles.inputGroup}>
                         <View style={styles.inputTextGroup}>
-                            <Text style={styles.inputText}>Имя</Text>
+                            <Text style={styles.inputText}>{language.firstNameTitle}</Text>
                             <TextInput
-                                placeholder={'Введите имя'}
+                                placeholder={language.firstNamePlaceHolder}
                                 placeholderTextColor={iconColors}
                                 style={[styles.input, {color: iconColors}]}
                                 keyboardType="default"
                             />
                         </View>
                         <View style={styles.inputTextGroup}>
-                            <Text style={styles.inputText}>Фамилия</Text>
+                            <Text style={styles.inputText}>{language.lastNameTitle}</Text>
                             <TextInput
-                                placeholder={'Введите фамилию'}
+                                placeholder={language.lastNamePlaceholder}
                                 placeholderTextColor={iconColors}
                                 style={[styles.input, {color: iconColors}]}
                                 keyboardType="default"
                             />
                         </View>
                         <View style={styles.inputTextGroup}>
-                            <Text style={styles.inputText}>Электронная почта</Text>
+                            <Text style={styles.inputText}>{language.emailTitle}</Text>
                             <TextInput
-                                placeholder={'Введите адрес электронной почты'}
+                                placeholder={language.emailPlaceHolder}
                                 placeholderTextColor={iconColors} style={[styles.input, {color: iconColors}]}
                                 keyboardType="default"
                             />
                         </View>
 
                         <View style={styles.inputTextGroup}>
-                            <Text style={styles.inputText}>Номер телефона</Text>
+                            <Text style={styles.inputText}>{language.numberPhoneTitle}</Text>
                             <View style={styles.numberContainer}>
                                 {/*<Picker*/}
                                 {/*    selectedValue={selectedValue}*/}
@@ -103,7 +106,7 @@ export default function Profile() {
                             style={styles.updateButton}
                             onPress={goToSettingsPage}
                         >
-                            <Text style={styles.updateButtonText}>Обновить данные</Text>
+                            <Text style={styles.updateButtonText}>{language.updateBtn}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -6,11 +6,14 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {stylesDark} from "./infoStylesDark";
 import {ICONCOlORS} from "../../constants/colors";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 
 export default function InfoScreen() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
-
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     let styles = isDarkTheme ? stylesDark : stylesLite
 
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
@@ -31,9 +34,9 @@ export default function InfoScreen() {
             </View>
 
 
-            <View style={styles.title}><Text style={styles.profileText}>Информация</Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.infoTitle}</Text></View>
 
-            <Text style = {styles.infoText}> Информация будет дополнена в скором времени</Text>
+            <Text style = {styles.infoText}>{language.infoTitleText}</Text>
         </View>
     )
 }

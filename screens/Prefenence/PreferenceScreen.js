@@ -15,6 +15,7 @@ import {stylesDark} from "./preferenceStyleDark";
 import {stylesLite} from "./preferenceStyles";
 import {Picker} from "@react-native-picker/picker";
 import {isEnabled} from "react-native/Libraries/Performance/Systrace";
+import {changeLanguage, selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function PreferenceScreen() {
     const dispatch = useDispatch()
@@ -28,7 +29,6 @@ export default function PreferenceScreen() {
 
 
     const [pinModalVisible, setPinModalVisible] = useState(false);
-    const handleValueChange = (itemValue, itemIndex) => setSelectedValue(itemValue)
 
     const toggleSwitcThem = () => dispatch(toggleTheme(!isDarkTheme));
 
@@ -43,7 +43,15 @@ export default function PreferenceScreen() {
     const hidePinModal = () => setPinModalVisible(false);
 
     const navigation = useNavigation();
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
+    const changeLanguageHandler = (newLanguage) => {
+        dispatch(changeLanguage(newLanguage));
+        setSelectedValue(newLanguage)
+    };
+    console.log(selectedValue)
 
     return (
         <ScrollView style={styles.scrollViewContainer}>
@@ -53,11 +61,11 @@ export default function PreferenceScreen() {
                         <Ionicons name='arrow-back' size={30} color={iconColors}/>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.title}><Text style={styles.profileText}>Настройки</Text></View>
+                <View style={styles.title}><Text style={styles.profileText}>{language.settingTitle}</Text></View>
 
-                <View style={styles.themeTitle}><Text style={styles.themeTitleText}>Выберите тему</Text></View>
+                <View style={styles.themeTitle}><Text style={styles.themeTitleText}>{language.selectTheme}</Text></View>
                 <View style={styles.themeContainer}>
-                    <Text style={styles.settingsText}>Использовать темную тему</Text>
+                    <Text style={styles.settingsText}>{language.useDarkTheme}</Text>
                     <Switch
                         trackColor={{false: '#767577', true: '#81b0ff'}}
                         thumbColor={isDarkTheme ? '#f5dd4b' : '#f4f3f4'}
@@ -70,28 +78,28 @@ export default function PreferenceScreen() {
                 </View>
 
 
-                <View style={styles.themeTitle}><Text style={styles.themeTitleText}>Выберите язык системы</Text></View>
+                <View style={styles.themeTitle}><Text style={styles.themeTitleText}>{language.selectSystemLanguage}</Text></View>
 
                 <View style={styles.themeContainer}>
 
                     <Picker
                         selectedValue={selectedValue}
                         style={styles.inputAddressSelector}
-                        onValueChange={handleValueChange}
+                        onValueChange={changeLanguageHandler}
                         mode={'dropdown'}
                         dropdownIconColor={iconColors}
                     >
                         <Picker.Item label="Выберите язык" value="0"/>
-                        <Picker.Item label="Кыргызский" value="1"/>
-                        <Picker.Item label="Русский" value="2"/>
-                        <Picker.Item label="Английский" value="3"/>
+                        <Picker.Item label="Кыргызский" value="kg"/>
+                        <Picker.Item label="Русский" value="ru"/>
+                        <Picker.Item label="Английский" value="en"/>
                     </Picker>
                 </View>
 
-                <View style={styles.themeTitle}><Text style={styles.themeTitleText}>Уведомления на почту</Text></View>
+                <View style={styles.themeTitle}><Text style={styles.themeTitleText}>{language.notificationEmail}</Text></View>
                 <View style={styles.themeContainer}>
 
-                    <Text style={styles.settingsText}>Хочу получать уведомления   на электронную почту</Text>
+                    <Text style={styles.settingsText}>{language.iWantNotificationOnEmail}</Text>
 
                     <Switch
                         trackColor={{false: '#767577', true: '#81b0ff'}}

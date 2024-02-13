@@ -25,6 +25,7 @@ import {ICONCOlORS} from "../../constants/colors";
 import {stylesDark} from "./styles/registrationStylesDark";
 import {stylesLite} from "./styles/registrationStyles";
 import PDFViewer from "./PdfViewer";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 const RegistrationScreen = ({navigation}) => {
     const dispatch = useDispatch();
@@ -42,6 +43,9 @@ const RegistrationScreen = ({navigation}) => {
     const [doneRegistration, setdoneRegistration] = useState(false)
     const [keyboardShown, setKeyboardShown] = useState(false);
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
@@ -97,7 +101,7 @@ const RegistrationScreen = ({navigation}) => {
                 return (
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
-                            <Text style={styles.stepText}>Шаг 1: Согласие</Text>
+                            <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName1}</Text>
                             <View style={{flex: 1, width: '100%', height: '100%', marginTop: 10, alignSelf: 'center'}}>
                                 <PDFViewer/>
                             </View>
@@ -109,7 +113,7 @@ const RegistrationScreen = ({navigation}) => {
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
                             <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 2: Персональные данные</Text>
+                                <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName2}</Text>
                                 <ScrollView style={styles.renderedContent}>
                                     <Step2Screen/>
                                 </ScrollView>
@@ -123,7 +127,7 @@ const RegistrationScreen = ({navigation}) => {
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
                             <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 3: Паспортные данные </Text>
+                                <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName3} </Text>
                                 <ScrollView style={styles.renderedContent}>
                                     <Step3Screen/>
                                 </ScrollView>
@@ -137,7 +141,7 @@ const RegistrationScreen = ({navigation}) => {
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
                             <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 4: Придумайте пароль</Text>
+                                <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName4}</Text>
                                 <ScrollView style={styles.renderedContent}>
                                     <Step4Screen/>
                                 </ScrollView>
@@ -152,7 +156,7 @@ const RegistrationScreen = ({navigation}) => {
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
                             <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 5: Загрузите документы</Text>
+                                <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName5}</Text>
                                 <ScrollView style={styles.renderedContent}>
                                     <Step5Screen/>
                                 </ScrollView>
@@ -167,7 +171,7 @@ const RegistrationScreen = ({navigation}) => {
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
                             <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 6: Укажите место жительство</Text>
+                                <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName6}</Text>
                                 <ScrollView style={styles.renderedContent}>
                                     <Step6Screen/>
                                 </ScrollView>
@@ -182,7 +186,7 @@ const RegistrationScreen = ({navigation}) => {
                     <View style={styles.loginSreenParent}>
                         <View style={styles.container}>
                             <View style={styles.loginParentChild}>
-                                <Text style={styles.stepText}>Шаг 7: Завершение регистрации</Text>
+                                <Text style={styles.stepText}>{language.stepSitile} {currentStep}: {language.stepSitleFunctionName7}</Text>
                                 {!reverseShowInput && (
                                     <ScrollView style={styles.renderedContent}>
                                         <Step7Screen/>
@@ -194,7 +198,7 @@ const RegistrationScreen = ({navigation}) => {
                                 {showInput && (
                                     <View style={styles.inputContainer2}>
                                         <View style={styles.inputTextContainer}>
-                                            <Text style={styles.titleText}>Введите код</Text><Text
+                                            <Text style={styles.titleText}>{language.codeTitle}</Text><Text
                                             style={styles.requredText}>*</Text>
                                         </View>
                                         <TextInput
@@ -206,7 +210,7 @@ const RegistrationScreen = ({navigation}) => {
                                         {sendMessageCode && (
                                             <View style={styles.inputContainerFinalText}>
                                                 <Text style={styles.sendCodeSMS}>
-                                                    Мы отправили код на ваш номер телефона, ожидайте SMS-сообщение
+                                                    {language.finalRegTitle3}
                                                 </Text>
                                             </View>
                                         )}
@@ -217,8 +221,7 @@ const RegistrationScreen = ({navigation}) => {
                                                     Ваш код успешно принят!
                                                 </Text>
 
-                                                <Text style={styles.sendCodeSMS}>Ожидайте пару секунд, пока документ
-                                                    сгенерируется</Text>
+                                                <Text style={styles.sendCodeSMS}>{language.waitTitle}</Text>
                                             </View>
                                         )}
                                     </View>
@@ -228,19 +231,19 @@ const RegistrationScreen = ({navigation}) => {
                             <View style={styles.btnGroup}>
                                 {!reverseShowInput && (
                                     <TouchableOpacity onPress={finishRegistration} style={styles.nextButton}>
-                                        <Text style={styles.nextBtnText}>Отправить</Text>
+                                        <Text style={styles.nextBtnText}>{language.sendBtnText}</Text>
                                     </TouchableOpacity>
                                 )}
 
                                 {showInputBtn && (
                                     <TouchableOpacity onPress={signDocument} style={styles.nextButton}>
-                                        <Text style={styles.nextBtnText}>Подписать</Text>
+                                        <Text style={styles.nextBtnText}>{language.confirmBtnText}</Text>
                                     </TouchableOpacity>
                                 )}
 
                                 {doneRegistration && (
                                     <TouchableOpacity onPress={finish} style={styles.nextButton}>
-                                        <Text style={styles.nextBtnText}>Подписать</Text>
+                                        <Text style={styles.nextBtnText}>{language.confirmBtnText}</Text>
                                     </TouchableOpacity>
                                 )}
                             </View>
@@ -255,13 +258,13 @@ const RegistrationScreen = ({navigation}) => {
 
     return (
         <View style={styles.containerMain}>
-            <Text style={styles.mainTitle}>Регистрация</Text>
+            <Text style={styles.mainTitle}>{language.registerBtn}</Text>
             <KeyboardAvoidingView>
                 {renderStepContent()}
                 {!keyboardShown && nextBtnVisible && pdfViewed && (
                     <View style={styles.btnGroup}>
                         <TouchableOpacity onPress={handleNextStep} style={styles.nextButton}>
-                            <Text style={styles.nextBtnText}>Далее</Text>
+                            <Text style={styles.nextBtnText}>{language.nextBtnText}</Text>
                         </TouchableOpacity>
                     </View>
                 )}

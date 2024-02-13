@@ -6,15 +6,18 @@ import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {stylesDark} from "./deponirStylesDark";
 import {stylesLite} from "./deponirStyles";
 import {ICONCOlORS} from "../../constants/colors";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 
 
 export default function DeponirScreen() {
     const isDarkTheme = useSelector(selectIsDarkTheme);
-    
+
     let styles = isDarkTheme ? stylesDark : stylesLite
     let iconColors = isDarkTheme ? ICONCOlORS.dark : ICONCOlORS.lite
-
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
     const navigation = useNavigation();
     return(
         <View style={styles.container}>
@@ -30,10 +33,10 @@ export default function DeponirScreen() {
 
             </View>
 
-            <View style={styles.title}><Text style={styles.profileText}>Депонировать</Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.deponTitle}</Text></View>
 
 
-            <Text style={styles.infoText}> ИНФОРМАЦИЯ ДОПОЛНЯЕТСЯ !!</Text>
+            <Text style={styles.infoText}>{language.deponInfo}</Text>
         </View>
     )
 

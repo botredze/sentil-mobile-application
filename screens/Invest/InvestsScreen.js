@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {selectIsDarkTheme} from "../../redux/slieces/themeSlice";
 import {ICONCOlORS} from "../../constants/colors";
 import {investStyleDark} from "./inversStylesDark";
+import {selectLanguage, selectLanguages} from "../../redux/slieces/languageSlice";
 
 export default function InvestsScreen() {
     const navigation = useNavigation();
@@ -18,6 +19,11 @@ export default function InvestsScreen() {
         navigation.navigate('BirgStakan');
     };
 
+    const languages = useSelector(selectLanguages);
+    const selectedLanguage = useSelector(selectLanguage);
+    const language = languages[selectedLanguage]
+
+
     return (
         <View style={styles.container}>
             <View style={styles.nav}>
@@ -26,22 +32,22 @@ export default function InvestsScreen() {
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.title}><Text style={styles.profileText}>Инвестиции</Text></View>
+            <View style={styles.title}><Text style={styles.profileText}>{language.investTitle}</Text></View>
 
             <View style={styles.sortButtonGroup}>
 
                 <TouchableOpacity
                     style={[styles.sortBtn,  shadowProp]}>
-                    <Text style={styles.buttonText}>Акции</Text><Text style={styles.countText}>[10]</Text>
+                    <Text style={styles.buttonText}>{language.stockBtn}</Text><Text style={styles.countText}>[10]</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.sortBtn,  shadowProp]}>
-                    <Text style={styles.buttonText}>Фонды</Text>
+                    <Text style={styles.buttonText}>{language.funds}</Text>
                     <Text style={styles.countText}>[10]</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.sortBtn,  shadowProp]}>
-                    <Text style={styles.buttonText}>Облигации</Text>
+                    <Text style={styles.buttonText}>{language.bonds}</Text>
                     <Text style={styles.countText}>[10]</Text>
                 </TouchableOpacity>
             </View>
