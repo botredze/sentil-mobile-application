@@ -3,31 +3,26 @@ import {CARD_CONTAINER_COLORS, COLORS, FONT_COLORS} from "../../constants/colors
 
 export const stylesDark = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1,
         backgroundColor: COLORS.mainBackgroundDark,
         flexGrow: 1,
         justifyContent: 'flex-end',
         padding: 5,
-        marginBottom: 70
-    },
-
-    chatMessage:{
-        backgroundColor: COLORS.mainBackgroundLite,
-        height:"100%",
-        position:"relative",
+        marginBottom: 70,
+        //  backgroundColor: 'red'
     },
 
     messageContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         marginBottom: 10,
-        backgroundColor: 'green'
+        //  backgroundColor: 'green'
     },
     myMessage: {
         justifyContent: 'flex-end',
     },
     messageBubble: {
-        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorLite,
+        backgroundColor: CARD_CONTAINER_COLORS.balanceContanerColorDark,
         borderRadius: 10,
         padding: 10,
     },
@@ -40,8 +35,8 @@ export const stylesDark = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        //backgroundColor: COLORS.mainBackgroundDark,
-        backgroundColor: 'purple',
+        backgroundColor: COLORS.mainBackgroundDark,
+        //backgroundColor: 'blue',
         borderTopWidth: 1,
         borderColor: COLORS.borderColorDark,
         paddingVertical: 5,
@@ -50,6 +45,15 @@ export const stylesDark = StyleSheet.create({
         bottom:5,
         left:0
     },
+
+    chatView: {
+        //backgroundColor: 'yeloow',
+        display: "flex",
+        flex: 1,
+        padding: 0,
+        flexDirection: 'column'
+    },
+
     input: {
         flex: 1,
         marginRight: 10,
@@ -59,6 +63,12 @@ export const stylesDark = StyleSheet.create({
         paddingVertical: 10,
     },
 
+    chatMessage:{
+        backgroundColor: COLORS.mainBackgroundDark,
+        height:"100%",
+        position:"relative",
+        //  backgroundColor: 'blue'
+    },
 
     nav: {
         display: "flex",

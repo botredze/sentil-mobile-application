@@ -218,7 +218,7 @@ const RegistrationScreen = ({navigation}) => {
                                         {doneRegistration && (
                                             <View style={styles.inputContainerFinalText}>
                                                 <Text style={styles.sendCodeSMS}>
-                                                    Ваш код успешно принят!
+                                                    {language.codeSuccses}
                                                 </Text>
 
                                                 <Text style={styles.sendCodeSMS}>{language.waitTitle}</Text>
